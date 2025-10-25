@@ -29,4 +29,4 @@
 
 ## Tensorflow的函数和图:
 1. 使用tf.function装饰器将python函数转化为Tensorflow图
-2. 我累了 不写了
+2. 我累了 不写了 才发现世界有太多舍不得 错过了一个对的人 谁晓得
