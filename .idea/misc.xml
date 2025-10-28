@@ -3,4 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="DeepLearning-py310" />
   </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="DeepLearning-py310" project-jdk-type="Python SDK" />
 </project>
