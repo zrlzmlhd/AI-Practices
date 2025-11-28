@@ -2,6 +2,33 @@
 
 欢迎来到机器学习实战模块！本模块涵盖从基础机器学习算法到深度学习框架的完整学习路径。
 
+<div align="center">
+
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.3+-green.svg)](https://scikit-learn.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.13+-orange.svg)](https://www.tensorflow.org/)
+
+</div>
+
+---
+
+## 🚀 快速开始
+
+```python
+# 使用项目工具模块
+from utils import set_seed, get_data_path, plot_training_history, plot_confusion_matrix
+
+# 设置随机种子保证可重复性
+set_seed(42)
+
+# 使用跨平台路径加载数据
+data_path = get_data_path('datasets')
+
+# 训练后可视化
+plot_training_history(history.history)
+plot_confusion_matrix(y_true, y_pred, classes)
+```
+
 ## 📚 模块简介
 
 本模块分为两个主要部分：
@@ -71,6 +98,14 @@
 - 房价预测
 - 分类问题
 
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | Hands-On ML第三版 | [ageron/handson-ml3](https://github.com/ageron/handson-ml3) |
+| Kaggle | 房价预测比赛 | [kaggle.com/c/house-prices](https://www.kaggle.com/c/house-prices-advanced-regression-techniques) |
+| GitHub | Scikit-learn官方示例 | [scikit-learn/scikit-learn](https://github.com/scikit-learn/scikit-learn/tree/main/examples) |
+
 📄 [详细笔记](机器学习基础知识/训练模型/第四章笔记.md)
 
 ---
@@ -94,6 +129,13 @@
 **实战案例：**
 - 鸢尾花分类
 - 回归任务
+
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | 决策树可视化工具 | [parrt/dtreeviz](https://github.com/parrt/dtreeviz) |
+| Kaggle | Titanic经典决策树 | [kaggle.com/c/titanic](https://www.kaggle.com/c/titanic) |
 
 📄 [详细笔记](机器学习基础知识/Decision%20Tree/Decision%20Tree%20笔记.md)
 
@@ -121,6 +163,13 @@
 - 多分类问题
 - 回归任务
 
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | SVM教程 | [jakevdp/PythonDataScienceHandbook](https://github.com/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/05.07-Support-Vector-Machines.ipynb) |
+| 官方文档 | Scikit-learn SVM | [scikit-learn.org/stable/modules/svm](https://scikit-learn.org/stable/modules/svm.html) |
+
 📄 [详细笔记](机器学习基础知识/Support%20Vector%20Machine/第五章笔记.md)
 
 ---
@@ -147,6 +196,13 @@
 - 特征工程
 - 噪声过滤
 
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | t-SNE可视化 | [oreillymedia/t-SNE-tutorial](https://github.com/oreillymedia/t-SNE-tutorial) |
+| GitHub | UMAP降维工具 | [lmcinnes/umap](https://github.com/lmcinnes/umap) |
+
 📄 [详细笔记](机器学习基础知识/降维/降维.md)
 
 ---
@@ -172,6 +228,13 @@
 - 客户分群
 - 图像分割
 - 异常检测
+
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| Kaggle | 客户分群数据集 | [kaggle.com/datasets/vjchoudhary7/customer-segmentation](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python) |
+| GitHub | 聚类算法合集 | [scikit-learn-contrib/hdbscan](https://github.com/scikit-learn-contrib/hdbscan) |
 
 📄 [详细笔记](机器学习基础知识/无监督学习/无监督学习.md)
 
@@ -200,6 +263,15 @@
 - 适用场景分析
 - 调参技巧
 
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | XGBoost官方仓库 | [dmlc/xgboost](https://github.com/dmlc/xgboost) |
+| GitHub | LightGBM官方仓库 | [microsoft/LightGBM](https://github.com/microsoft/LightGBM) |
+| GitHub | CatBoost官方仓库 | [catboost/catboost](https://github.com/catboost/catboost) |
+| Kaggle | Stacking集成示例 | [kaggle.com/code/serigne/stacked-regressions](https://www.kaggle.com/code/serigne/stacked-regressions-top-4-on-leaderboard) |
+
 📄 [详细笔记](机器学习基础知识/集成学习和随机森林/第七章笔记.md)
 
 ---
@@ -219,6 +291,13 @@
 - 精确率和召回率
 - F1分数
 - 混淆矩阵
+
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| Kaggle | Digit Recognizer比赛 | [kaggle.com/c/digit-recognizer](https://www.kaggle.com/c/digit-recognizer) |
+| GitHub | MNIST多种实现 | [hsjeong5/MNIST-for-Numpy](https://github.com/hsjeong5/MNIST-for-Numpy) |
 
 ---
 
@@ -258,6 +337,14 @@
 - 模型编译
 - 模型训练
 - 超参数调优
+
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | Keras官方示例 | [keras-team/keras-io](https://github.com/keras-team/keras-io/tree/master/examples) |
+| 官方文档 | Keras指南 | [keras.io/guides](https://keras.io/guides/) |
+| GitHub | Deep Learning with Python | [fchollet/deep-learning-with-python-notebooks](https://github.com/fchollet/deep-learning-with-python-notebooks) |
 
 📄 [详细笔记](神经网络和深度学习/Keras人工神经网络简介/Keras神经网络简介.md)
 
@@ -324,6 +411,14 @@
 **实战项目：**
 - 图像分类
 - 迁移学习应用
+
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | PyTorch图像分类 | [bentrevett/pytorch-image-classification](https://github.com/bentrevett/pytorch-image-classification) |
+| Kaggle | Dogs vs. Cats | [kaggle.com/c/dogs-vs-cats](https://www.kaggle.com/c/dogs-vs-cats) |
+| 官方教程 | TensorFlow迁移学习 | [tensorflow.org/tutorials/images/transfer_learning](https://www.tensorflow.org/tutorials/images/transfer_learning) |
 
 📄 [详细笔记](神经网络和深度学习/使用卷积神经网络的深度计算机视觉/计算机视觉.md)
 

@@ -192,6 +192,17 @@ AI-Practices/
 - MNIST手写数字识别
 - 客户分群分析
 
+**优质学习资源**:
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | Hands-On ML (Scikit-Learn教程) | [ageron/handson-ml3](https://github.com/ageron/handson-ml3) |
+| GitHub | Microsoft ML入门课程 | [microsoft/ML-For-Beginners](https://github.com/microsoft/ML-For-Beginners) |
+| GitHub | Awesome Machine Learning | [josephmisiti/awesome-machine-learning](https://github.com/josephmisiti/awesome-machine-learning) |
+| Kaggle | Titanic生存预测 (分类入门) | [Titanic Competition](https://www.kaggle.com/c/titanic) |
+| Kaggle | 房价预测 (回归入门) | [House Prices](https://www.kaggle.com/c/house-prices-advanced-regression-techniques) |
+| Kaggle | MNIST手写数字识别 | [Digit Recognizer](https://www.kaggle.com/c/digit-recognizer) |
+
 </details>
 
 #### 2️⃣ **深度学习框架**
@@ -218,6 +229,17 @@ AI-Practices/
 - 自定义损失函数
 - 动态计算图
 
+**优质学习资源**:
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | TensorFlow官方教程 | [tensorflow/docs](https://github.com/tensorflow/docs) |
+| GitHub | PyTorch官方教程 | [pytorch/tutorials](https://github.com/pytorch/tutorials) |
+| GitHub | Keras代码示例 | [keras-team/keras-io](https://github.com/keras-team/keras-io) |
+| GitHub | Deep Learning with Python | [fchollet/deep-learning-with-python-notebooks](https://github.com/fchollet/deep-learning-with-python-notebooks) |
+| 官方文档 | TensorFlow教程 | [tensorflow.org/tutorials](https://www.tensorflow.org/tutorials) |
+| 官方文档 | PyTorch教程 | [pytorch.org/tutorials](https://pytorch.org/tutorials/) |
+
 </details>
 
 #### 3️⃣ **计算机视觉**
@@ -236,6 +258,17 @@ AI-Practices/
 - 猫狗分类
 - 花卉识别
 - DeepDream风格迁移
+
+**优质学习资源**:
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | PyTorch图像分类教程 | [bentrevett/pytorch-image-classification](https://github.com/bentrevett/pytorch-image-classification) |
+| GitHub | Awesome图像分类论文 | [weiaicunzai/awesome-image-classification](https://github.com/weiaicunzai/awesome-image-classification) |
+| GitHub | IBM CNN图像分类 | [IBM/image-classification-using-cnn-and-keras](https://github.com/IBM/image-classification-using-cnn-and-keras) |
+| Kaggle | 猫狗分类比赛 | [Dogs vs. Cats](https://www.kaggle.com/c/dogs-vs-cats) |
+| Kaggle | 植物病害检测 | [Plant Pathology](https://www.kaggle.com/c/plant-pathology-2020-fgvc7) |
+| 官方教程 | TensorFlow DCGAN | [TensorFlow DCGAN](https://www.tensorflow.org/tutorials/generative/dcgan) |
 
 </details>
 
@@ -256,6 +289,17 @@ AI-Practices/
 - 使用LSTM生成文本
 - 温度预测 (时间序列)
 
+**优质学习资源**:
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | Google官方BERT | [google-research/bert](https://github.com/google-research/bert) |
+| GitHub | Transformers for NLP教程 | [Denis2054/Transformers-for-NLP-2nd-Edition](https://github.com/Denis2054/Transformers-for-NLP-2nd-Edition) |
+| GitHub | Awesome Transformer NLP | [cedrickchee/awesome-transformer-nlp](https://github.com/cedrickchee/awesome-transformer-nlp) |
+| GitHub | Hugging Face Transformers | [huggingface/transformers](https://github.com/huggingface/transformers) |
+| Kaggle | IMDB情感分析数据集 | [IMDB Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews) |
+| Kaggle | NLP入门比赛 | [NLP Getting Started](https://www.kaggle.com/c/nlp-getting-started) |
+
 </details>
 
 #### 5️⃣ **生成式AI**
@@ -267,6 +311,17 @@ AI-Practices/
 - **变分自编码器 (VAE)**: 编码器-解码器架构
 - **文本生成**: 字符级RNN、LSTM文本生成
 - **图像生成**: DeepDream、Neural Style Transfer
+
+**优质学习资源**:
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | PyTorch-GAN实现大全 | [eriklindernoren/PyTorch-GAN](https://github.com/eriklindernoren/PyTorch-GAN) |
+| GitHub | Keras-GAN实现大全 | [eriklindernoren/Keras-GAN](https://github.com/eriklindernoren/Keras-GAN) |
+| GitHub | PyTorch GANs教程 | [gordicaleksa/pytorch-GANs](https://github.com/gordicaleksa/pytorch-GANs) |
+| 官方教程 | PyTorch DCGAN教程 | [DCGAN Tutorial](https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html) |
+| 官方教程 | TensorFlow DCGAN | [TF DCGAN](https://www.tensorflow.org/tutorials/generative/dcgan) |
+| 官方教程 | Keras条件GAN | [Conditional GAN](https://keras.io/examples/generative/conditional_gan/) |
 
 </details>
 
@@ -281,6 +336,17 @@ AI-Practices/
 - **学习率调度**: 学习率衰减、Warm-up
 - **超参数调优**: Grid Search, Random Search, Bayesian Optimization
 - **模型集成**: Voting, Stacking, Blending
+
+**优质学习资源**:
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | XGBoost官方仓库 | [dmlc/xgboost](https://github.com/dmlc/xgboost) |
+| GitHub | LightGBM官方仓库 | [microsoft/LightGBM](https://github.com/microsoft/LightGBM) |
+| GitHub | CatBoost官方仓库 | [catboost/catboost](https://github.com/catboost/catboost) |
+| GitHub | Optuna超参数优化 | [optuna/optuna](https://github.com/optuna/optuna) |
+| Kaggle | 集成学习示例 | [Stacked Regressions](https://www.kaggle.com/code/krishnaraj30/ensemble-stacked-regressions-xgboost-lightgbm) |
+| 教程 | 梯度提升全指南 | [MachineLearningMastery](https://machinelearningmastery.com/gradient-boosting-with-scikit-learn-xgboost-lightgbm-and-catboost/) |
 
 </details>
 
@@ -450,6 +516,68 @@ jupyter notebook LinearRegression.ipynb
 - [PyTorch官方教程](https://pytorch.org/tutorials/)
 - [Scikit-learn文档](https://scikit-learn.org/stable/)
 - [Keras文档](https://keras.io/)
+
+### 精选GitHub项目
+
+#### 综合学习资源
+
+| 项目名称 | 描述 | 链接 |
+|---------|------|------|
+| **Hands-On ML 3** | 《机器学习实战》第三版代码 | [ageron/handson-ml3](https://github.com/ageron/handson-ml3) |
+| **ML-For-Beginners** | 微软12周ML课程 | [microsoft/ML-For-Beginners](https://github.com/microsoft/ML-For-Beginners) |
+| **Deep Learning with Python** | Keras作者配套代码 | [fchollet/deep-learning-with-python-notebooks](https://github.com/fchollet/deep-learning-with-python-notebooks) |
+| **500+ AI/ML项目** | 实战项目合集 | [ashishpatel26/500-AI-Machine-learning-Deep-learning-Computer-vision-NLP-Projects-with-code](https://github.com/ashishpatel26/500-AI-Machine-learning-Deep-learning-Computer-vision-NLP-Projects-with-code) |
+
+#### 深度学习
+
+| 项目名称 | 描述 | 链接 |
+|---------|------|------|
+| **PyTorch Tutorials** | PyTorch官方教程 | [pytorch/tutorials](https://github.com/pytorch/tutorials) |
+| **TensorFlow Docs** | TensorFlow官方文档 | [tensorflow/docs](https://github.com/tensorflow/docs) |
+| **Top Deep Learning** | 顶级深度学习资源 | [mbadry1/Top-Deep-Learning](https://github.com/mbadry1/Top-Deep-Learning) |
+
+#### 计算机视觉
+
+| 项目名称 | 描述 | 链接 |
+|---------|------|------|
+| **PyTorch Image Classification** | 图像分类完整教程 | [bentrevett/pytorch-image-classification](https://github.com/bentrevett/pytorch-image-classification) |
+| **Awesome Image Classification** | 图像分类论文集 | [weiaicunzai/awesome-image-classification](https://github.com/weiaicunzai/awesome-image-classification) |
+| **YOLO v5** | 目标检测 | [ultralytics/yolov5](https://github.com/ultralytics/yolov5) |
+
+#### 自然语言处理
+
+| 项目名称 | 描述 | 链接 |
+|---------|------|------|
+| **Hugging Face Transformers** | 预训练模型库 | [huggingface/transformers](https://github.com/huggingface/transformers) |
+| **BERT** | Google官方BERT | [google-research/bert](https://github.com/google-research/bert) |
+| **Awesome NLP** | NLP资源大全 | [keon/awesome-nlp](https://github.com/keon/awesome-nlp) |
+
+#### 生成式AI
+
+| 项目名称 | 描述 | 链接 |
+|---------|------|------|
+| **PyTorch-GAN** | GAN实现大全 | [eriklindernoren/PyTorch-GAN](https://github.com/eriklindernoren/PyTorch-GAN) |
+| **Keras-GAN** | Keras GAN实现 | [eriklindernoren/Keras-GAN](https://github.com/eriklindernoren/Keras-GAN) |
+| **Stable Diffusion** | 图像生成 | [CompVis/stable-diffusion](https://github.com/CompVis/stable-diffusion) |
+
+### 精选Kaggle比赛
+
+#### 入门级比赛
+
+| 比赛名称 | 类型 | 链接 |
+|---------|------|------|
+| **Titanic** | 二分类入门 | [kaggle.com/c/titanic](https://www.kaggle.com/c/titanic) |
+| **House Prices** | 回归入门 | [kaggle.com/c/house-prices](https://www.kaggle.com/c/house-prices-advanced-regression-techniques) |
+| **Digit Recognizer** | 图像分类入门 | [kaggle.com/c/digit-recognizer](https://www.kaggle.com/c/digit-recognizer) |
+| **Spaceship Titanic** | 分类 | [kaggle.com/c/spaceship-titanic](https://www.kaggle.com/c/spaceship-titanic) |
+
+#### 进阶比赛
+
+| 比赛名称 | 类型 | 链接 |
+|---------|------|------|
+| **Dogs vs Cats** | 图像分类 | [kaggle.com/c/dogs-vs-cats](https://www.kaggle.com/c/dogs-vs-cats) |
+| **NLP Getting Started** | 文本分类 | [kaggle.com/c/nlp-getting-started](https://www.kaggle.com/c/nlp-getting-started) |
+| **Store Sales** | 时间序列 | [kaggle.com/c/store-sales-time-series](https://www.kaggle.com/c/store-sales-time-series-forecasting) |
 
 ### 相关项目
 

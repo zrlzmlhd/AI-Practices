@@ -2,6 +2,31 @@
 
 基于François Chollet的《Python深度学习》（Deep Learning with Python）的深度学习高级教程。
 
+<div align="center">
+
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.13+-orange.svg)](https://www.tensorflow.org/)
+[![Keras](https://img.shields.io/badge/Keras-2.13+-red.svg)](https://keras.io/)
+
+</div>
+
+---
+
+## 🚀 快速开始
+
+```python
+# 使用项目工具模块
+from utils import set_seed, get_data_path, plot_training_history
+
+# 设置随机种子保证可重复性
+set_seed(42)
+
+# 使用跨平台路径
+data_path = get_data_path('cats_and_dogs', 'train')
+
+# 训练后可视化
+plot_training_history(history.history)
+```
+
 ## 📚 模块简介
 
 本模块是对经典著作《Python深度学习》的实践和扩展，涵盖计算机视觉、自然语言处理、生成式AI等高级主题。作者François Chollet是Keras框架的创始人，本教程将带你深入理解深度学习的核心概念和实践技巧。
@@ -105,6 +130,14 @@ python深度学习红书/
 - 理解决策过程
 - 改进架构设计
 
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | CNN可视化工具 | [jacobgil/keras-grad-cam](https://github.com/jacobgil/keras-grad-cam) |
+| GitHub | CNN解释器 | [jacobgil/pytorch-grad-cam](https://github.com/jacobgil/pytorch-grad-cam) |
+| 论文 | Grad-CAM | [arXiv:1610.02391](https://arxiv.org/abs/1610.02391) |
+
 ---
 
 ### 3. 猫狗分类模型 ⭐
@@ -140,6 +173,15 @@ python深度学习红书/
 | 特征提取 | 短 | 较高 | 数据较少 |
 | 微调 | 中等 | 最高 | 希望最佳性能 |
 
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| Kaggle | Dogs vs. Cats 比赛 | [kaggle.com/c/dogs-vs-cats](https://www.kaggle.com/c/dogs-vs-cats) |
+| GitHub | PyTorch图像分类教程 | [bentrevett/pytorch-image-classification](https://github.com/bentrevett/pytorch-image-classification) |
+| GitHub | TensorFlow迁移学习 | [tensorflow/models](https://github.com/tensorflow/models) |
+| 教程 | Keras迁移学习官方教程 | [keras.io/guides/transfer_learning](https://keras.io/guides/transfer_learning/) |
+
 ---
 
 ## 📝 第二部分：深度学习用于文本和序列
@@ -170,6 +212,15 @@ NLP基础技术。
 
 **实战项目：**
 IMDB电影评论情感分析
+
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| Kaggle | IMDB情感分析数据集 | [kaggle.com/datasets/lakshmi25npathi/imdb-dataset](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews) |
+| GitHub | Hugging Face Transformers | [huggingface/transformers](https://github.com/huggingface/transformers) |
+| GitHub | GloVe预训练词向量 | [stanfordnlp/GloVe](https://github.com/stanfordnlp/GloVe) |
+| GitHub | Gensim Word2Vec | [RaRe-Technologies/gensim](https://github.com/RaRe-Technologies/gensim) |
 
 ---
 
@@ -215,6 +266,14 @@ output_t = activation(W * input_t + U * state_t-1 + b)
 - 文本生成
 - 时间序列预测
 - 序列标注
+
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | LSTM时间序列预测 | [jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction](https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction) |
+| Kaggle | Store Sales时间序列比赛 | [kaggle.com/c/store-sales-time-series-forecasting](https://www.kaggle.com/c/store-sales-time-series-forecasting) |
+| 教程 | Keras RNN官方教程 | [keras.io/guides/working_with_rnns](https://keras.io/guides/working_with_rnns/) |
 
 ---
 
@@ -296,6 +355,15 @@ output_t = activation(W * input_t + U * state_t-1 + b)
 - 图像超分辨率
 - 风格迁移
 - 数据增强
+
+**优质学习资源：**
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | PyTorch-GAN实现大全 | [eriklindernoren/PyTorch-GAN](https://github.com/eriklindernoren/PyTorch-GAN) |
+| GitHub | Keras-GAN实现大全 | [eriklindernoren/Keras-GAN](https://github.com/eriklindernoren/Keras-GAN) |
+| 官方教程 | TensorFlow DCGAN | [tensorflow.org/tutorials/generative/dcgan](https://www.tensorflow.org/tutorials/generative/dcgan) |
+| 官方教程 | PyTorch DCGAN | [pytorch.org/tutorials/beginner/dcgan_faces_tutorial](https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html) |
 
 📄 [GAN详解](生成式深度学习/生成式对抗网络/关于GAN网络的说明.md)
 

@@ -2,6 +2,34 @@
 
 深度学习核心组件的详细参考资料。
 
+<div align="center">
+
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.13+-orange.svg)](https://www.tensorflow.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
+
+</div>
+
+---
+
+## 🚀 快速开始
+
+```python
+import tensorflow as tf
+from tensorflow.keras.layers import Dense, Activation
+
+# 激活函数使用
+x = Dense(64, activation='relu')(inputs)          # ReLU
+x = Dense(64, activation='leaky_relu')(x)         # Leaky ReLU
+outputs = Dense(10, activation='softmax')(x)       # Softmax输出
+
+# 损失函数使用
+model.compile(
+    loss='sparse_categorical_crossentropy',  # 多分类
+    optimizer='adam',
+    metrics=['accuracy']
+)
+```
+
 ## 📚 模块简介
 
 本模块提供了深度学习中最重要的两个组件的详细说明：**激活函数**和**损失函数**。这些是构建神经网络的基础模块，理解它们对于设计和优化模型至关重要。
@@ -478,6 +506,16 @@ $$FL = -\alpha_t(1-p_t)^\gamma \log(p_t)$$
 - 调整学习率
 
 ## 📚 参考资料
+
+### 优质学习资源
+
+| 资源类型 | 名称 | 链接 |
+|---------|------|------|
+| GitHub | PyTorch激活函数实现 | [pytorch/pytorch](https://github.com/pytorch/pytorch/blob/main/torch/nn/modules/activation.py) |
+| GitHub | TensorFlow激活函数 | [tensorflow/tensorflow](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/python/keras/activations.py) |
+| GitHub | 自定义损失函数示例 | [keras-team/keras-io](https://github.com/keras-team/keras-io/blob/master/examples/keras_recipes/creating_tfrecords.py) |
+| 官方文档 | TensorFlow激活函数 | [tensorflow.org/api_docs/python/tf/keras/activations](https://www.tensorflow.org/api_docs/python/tf/keras/activations) |
+| 官方文档 | PyTorch损失函数 | [pytorch.org/docs/stable/nn](https://pytorch.org/docs/stable/nn.html#loss-functions) |
 
 ### 论文
 - Glorot & Bengio (2010): Understanding the difficulty of training deep feedforward neural networks
