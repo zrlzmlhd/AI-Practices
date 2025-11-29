@@ -108,6 +108,266 @@ graph TB
 
 ---
 
+## 🚀 实战项目展示
+
+本项目包含 **19个完整的端到端实战项目**，每个项目都包含完整的代码、详细的文档和可运行的示例。
+
+### 📊 项目概览
+
+| 类别 | 项目数 | 难度范围 | 技术栈 |
+|-----|--------|---------|--------|
+| 机器学习基础 | 4个 | ⭐-⭐⭐⭐ | Scikit-learn, XGBoost |
+| 计算机视觉 | 4个 | ⭐⭐-⭐⭐⭐⭐ | TensorFlow, Keras, OpenCV |
+| 自然语言处理 | 4个 | ⭐⭐-⭐⭐⭐⭐ | LSTM, BERT, Transformers |
+| 时间序列 | 3个 | ⭐⭐⭐-⭐⭐⭐⭐ | LSTM, Prophet |
+| 推荐系统 | 1个 | ⭐⭐⭐ | 协同过滤, NCF |
+| 生成式AI | 3个 | ⭐⭐⭐⭐-⭐⭐⭐⭐⭐ | GAN, VAE, Style Transfer |
+
+### 🎯 精选项目
+
+#### 1️⃣ Titanic生存预测 (⭐☆☆☆☆)
+**最经典的机器学习入门项目**
+
+```python
+# 完整的机器学习流程
+from src.model import TitanicPredictor
+
+predictor = TitanicPredictor(model_type='random_forest')
+predictor.train(X_train, y_train)
+accuracy = predictor.evaluate(X_test, y_test)
+# 准确率: 85.1%
+```
+
+**项目亮点**:
+- ✅ 完整的数据探索和特征工程
+- ✅ 5种模型对比 (LR, DT, RF, XGBoost, Ensemble)
+- ✅ 超参数调优和模型集成
+- ✅ 详细的可视化分析
+
+📂 [查看项目](./实战项目/01_机器学习基础项目/01_Titanic生存预测/)
+
+---
+
+#### 2️⃣ MNIST手写数字识别 (⭐⭐☆☆☆)
+**深度学习入门的经典项目**
+
+```python
+# CNN图像分类
+from src.model import MNISTPredictor
+
+predictor = MNISTPredictor(model_type='improved_cnn')
+predictor.train(X_train, y_train, epochs=20)
+# 测试准确率: 99.4%
+```
+
+**项目亮点**:
+- ✅ 3种CNN架构实现 (Simple, Improved, Deep)
+- ✅ 数据增强和正则化技术
+- ✅ 批标准化和Dropout
+- ✅ 训练过程可视化
+
+📂 [查看项目](./实战项目/02_计算机视觉项目/05_MNIST手写数字识别/)
+
+---
+
+#### 3️⃣ IMDB情感分析 (⭐⭐☆☆☆)
+**NLP入门项目 - 文本分类**
+
+```python
+# LSTM情感分类
+from src.model import SentimentPredictor
+
+predictor = SentimentPredictor(model_type='bilstm')
+predictor.train(X_train, y_train)
+# 准确率: 89.2%
+```
+
+**项目亮点**:
+- ✅ 完整的文本预处理流程
+- ✅ 多种模型实现 (LSTM, BiLSTM, CNN, BERT)
+- ✅ 词嵌入和注意力机制
+- ✅ 模型可解释性分析
+
+📂 [查看项目](./实战项目/03_自然语言处理项目/09_情感分析/)
+
+---
+
+#### 4️⃣ 电影推荐系统 (⭐⭐⭐☆☆)
+**推荐算法实战**
+
+```python
+# 协同过滤推荐
+from src.model import MovieRecommender
+
+recommender = MovieRecommender(model_type='ncf')
+recommendations = recommender.recommend(user_id=1, n=10)
+# RMSE: 0.87, Precision@10: 0.45
+```
+
+**项目亮点**:
+- ✅ 多种推荐算法 (User-CF, Item-CF, SVD, NCF)
+- ✅ 深度学习推荐模型
+- ✅ 冷启动问题处理
+- ✅ 推荐质量评估
+
+📂 [查看项目](./实战项目/05_推荐系统项目/16_电影推荐系统/)
+
+---
+
+#### 5️⃣ DCGAN图像生成 (⭐⭐⭐⭐☆)
+**生成式AI - 从噪声生成图像**
+
+```python
+# GAN图像生成
+from src.model import DCGAN
+
+gan = DCGAN()
+gan.train(X_train, epochs=100)
+generated_images = gan.generate(n_samples=16)
+```
+
+**项目亮点**:
+- ✅ 完整的GAN实现 (生成器+判别器)
+- ✅ 训练技巧和稳定性优化
+- ✅ 多数据集支持 (MNIST, CelebA, CIFAR-10)
+- ✅ 潜在空间插值
+
+📂 [查看项目](./实战项目/06_生成式AI项目/17_DCGAN图像生成/)
+
+---
+
+### 📁 完整项目列表
+
+<details>
+<summary><b>点击查看所有19个实战项目</b></summary>
+
+#### 🔢 机器学习基础项目 (4个)
+
+1. **Titanic生存预测** (⭐☆☆☆☆) - 分类入门
+   - 特征工程、模型对比、集成学习
+   - [查看项目](./实战项目/01_机器学习基础项目/01_Titanic生存预测/)
+
+2. **房价预测** (⭐⭐☆☆☆) - 回归入门
+   - 线性回归、Ridge、Lasso、特征选择
+   - [查看项目](./实战项目/01_机器学习基础项目/02_房价预测/)
+
+3. **客户分群分析** (⭐⭐☆☆☆) - 聚类入门
+   - K-Means、DBSCAN、PCA降维
+   - [查看项目](./实战项目/01_机器学习基础项目/03_客户分群分析/)
+
+4. **Otto分类挑战** (⭐⭐⭐☆☆) - 集成学习
+   - XGBoost、LightGBM、Stacking
+   - [查看项目](./实战项目/01_机器学习基础项目/04_Otto分类挑战/)
+
+#### 🖼️ 计算机视觉项目 (4个)
+
+5. **MNIST手写数字识别** (⭐⭐☆☆☆) - CNN入门
+   - 卷积神经网络、数据增强
+   - [查看项目](./实战项目/02_计算机视觉项目/05_MNIST手写数字识别/)
+
+6. **猫狗分类器** (⭐⭐⭐☆☆) - 迁移学习
+   - VGG、ResNet、微调技术
+   - [查看项目](./实战项目/02_计算机视觉项目/06_猫狗分类器/)
+
+7. **CIFAR-10分类器** (⭐⭐⭐☆☆) - 深度CNN
+   - 深度网络、批标准化
+   - [查看项目](./实战项目/02_计算机视觉项目/07_CIFAR10分类器/)
+
+8. **目标检测系统** (⭐⭐⭐⭐☆) - YOLO/R-CNN
+   - 目标检测、边界框回归
+   - [查看项目](./实战项目/02_计算机视觉项目/08_目标检测系统/)
+
+#### 📝 自然语言处理项目 (4个)
+
+9. **情感分析** (⭐⭐☆☆☆) - 文本分类
+   - LSTM、词嵌入、BERT
+   - [查看项目](./实战项目/03_自然语言处理项目/09_情感分析/)
+
+10. **灾难推文分类** (⭐⭐⭐☆☆) - NLP进阶
+    - TF-IDF、TextCNN、BERT微调
+    - [查看项目](./实战项目/03_自然语言处理项目/10_灾难推文分类/)
+
+11. **命名实体识别** (⭐⭐⭐☆☆) - 序列标注
+    - BiLSTM-CRF、BERT NER
+    - [查看项目](./实战项目/03_自然语言处理项目/11_命名实体识别/)
+
+12. **聊天机器人** (⭐⭐⭐⭐☆) - Seq2Seq
+    - 注意力机制、Transformer
+    - [查看项目](./实战项目/03_自然语言处理项目/12_聊天机器人/)
+
+#### 📈 时间序列项目 (3个)
+
+13. **温度预测** (⭐⭐⭐☆☆) - LSTM时间序列
+    - 多变量时间序列、滑动窗口
+    - [查看项目](./实战项目/04_时间序列项目/13_温度预测/)
+
+14. **销量预测** (⭐⭐⭐☆☆) - Prophet模型
+    - 时间序列分解、多步预测
+    - [查看项目](./实战项目/04_时间序列项目/14_销量预测/)
+
+15. **股票价格预测** (⭐⭐⭐⭐☆) - 高级时间序列
+    - LSTM/GRU、技术指标特征
+    - [查看项目](./实战项目/04_时间序列项目/15_股票价格预测/)
+
+#### 🎮 推荐系统项目 (1个)
+
+16. **电影推荐系统** (⭐⭐⭐☆☆) - 协同过滤
+    - SVD、NCF、混合推荐
+    - [查看项目](./实战项目/05_推荐系统项目/16_电影推荐系统/)
+
+#### 🎨 生成式AI项目 (3个)
+
+17. **DCGAN图像生成** (⭐⭐⭐⭐☆) - GAN
+    - 生成对抗网络、训练技巧
+    - [查看项目](./实战项目/06_生成式AI项目/17_DCGAN图像生成/)
+
+18. **LSTM文本生成** (⭐⭐⭐⭐☆) - 序列生成
+    - 字符级语言模型、温度采样
+    - [查看项目](./实战项目/06_生成式AI项目/18_LSTM文本生成/)
+
+19. **风格迁移** (⭐⭐⭐⭐⭐) - Neural Style Transfer
+    - VGG特征提取、内容/风格损失
+    - [查看项目](./实战项目/06_生成式AI项目/19_风格迁移/)
+
+</details>
+
+### 🛠️ 项目特点
+
+每个实战项目都包含：
+
+- ✅ **完整的代码实现** - 可直接运行的Python代码
+- ✅ **详细的README文档** - 项目说明、使用方法、性能指标
+- ✅ **数据处理脚本** - 数据下载、预处理、增强
+- ✅ **模型训练脚本** - 完整的训练流程和超参数
+- ✅ **评估和可视化** - 性能评估、结果可视化
+- ✅ **Jupyter Notebooks** - 交互式教程和实验
+
+### 📦 快速开始实战项目
+
+```bash
+# 1. 克隆项目
+git clone https://github.com/yourusername/AI-Practices.git
+cd AI-Practices
+
+# 2. 安装依赖
+cd 实战项目
+pip install -r requirements.txt
+
+# 3. 运行示例项目
+cd 01_机器学习基础项目/01_Titanic生存预测
+
+# 下载数据
+python src/download_data.py
+
+# 训练模型
+python src/train.py
+
+# 评估模型
+python src/evaluate.py
+```
+
+---
+
 ## 📑 内容概览
 
 ### 📂 项目结构
