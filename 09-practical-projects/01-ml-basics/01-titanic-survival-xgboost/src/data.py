@@ -107,99 +107,130 @@ def preprocess_data(df):
     df = df.copy()
 
     # ============================================
-    # 1. 缺失值处理
+    # 1. 标准化列名（兼容不同数据源）
+    # ============================================
+    # 一些数据源的列名可能不同，需要标准化
+    column_mapping = {
+        'Siblings/Spouses Aboard': 'SibSp',
+        'Parents/Children Aboard': 'Parch'
+    }
+    df = df.rename(columns=column_mapping)
+
+    # ============================================
+    # 2. 缺失值处理
     # ============================================
 
     # Age: 用中位数填充
     # 为什么用中位数：年龄分布可能有偏，中位数比均值更稳健
-    df['Age'].fillna(df['Age'].median(), inplace=True)
+    if 'Age' in df.columns:
+        age_median = df['Age'].median()
+        df['Age'] = df['Age'].fillna(age_median)
 
-    # Embarked: 用众数填充
+    # Embarked: 用众数填充（如果存在该列）
     # 为什么用众数：登船港口是类别变量，用最常见的值填充
-    df['Embarked'].fillna(df['Embarked'].mode()[0], inplace=True)
+    if 'Embarked' in df.columns:
+        embarked_mode = df['Embarked'].mode()[0]
+        df['Embarked'] = df['Embarked'].fillna(embarked_mode)
+        # 编码
+        df['Embarked'] = LabelEncoder().fit_transform(df['Embarked'])
+    else:
+        # 如果没有Embarked列，创建一个默认列
+        df['Embarked'] = 0
 
-    # Cabin: 创建新特征"是否有船舱号"
+    # Cabin: 创建新特征"是否有船舱号"（如果存在该列）
     # 为什么：船舱号缺失率很高，但"是否有船舱"本身是有用信息
-    df['Has_Cabin'] = df['Cabin'].notna().astype(int)
+    if 'Cabin' in df.columns:
+        df['Has_Cabin'] = df['Cabin'].notna().astype(int)
+    else:
+        # 如果没有Cabin列，创建一个默认列
+        df['Has_Cabin'] = 0
 
     # Fare: 用中位数填充（如果有缺失）
-    if df['Fare'].isna().any():
-        df['Fare'].fillna(df['Fare'].median(), inplace=True)
+    if 'Fare' in df.columns and df['Fare'].isna().any():
+        fare_median = df['Fare'].median()
+        df['Fare'] = df['Fare'].fillna(fare_median)
 
     # ============================================
-    # 2. 特征工程
+    # 3. 特征工程
     # ============================================
 
-    # 2.1 家庭规模
+    # 3.1 家庭规模
     # 为什么有效：独自一人生存率低，小家庭生存率高，大家庭生存率低
-    df['Family_Size'] = df['SibSp'] + df['Parch'] + 1
+    if 'SibSp' in df.columns and 'Parch' in df.columns:
+        df['Family_Size'] = df['SibSp'] + df['Parch'] + 1
 
-    # 2.2 是否独自一人
-    df['Is_Alone'] = (df['Family_Size'] == 1).astype(int)
+        # 3.2 是否独自一人
+        df['Is_Alone'] = (df['Family_Size'] == 1).astype(int)
+    else:
+        df['Family_Size'] = 1
+        df['Is_Alone'] = 1
 
-    # 2.3 从姓名中提取头衔
+    # 3.3 从姓名中提取头衔
     # 为什么有效：头衔反映了社会地位和性别，与生存率高度相关
-    df['Title'] = df['Name'].str.extract(' ([A-Za-z]+)\.', expand=False)
+    if 'Name' in df.columns:
+        df['Title'] = df['Name'].str.extract(' ([A-Za-z]+)\.', expand=False)
 
-    # 合并稀有头衔
-    title_mapping = {
-        'Mr': 'Mr',
-        'Miss': 'Miss',
-        'Mrs': 'Mrs',
-        'Master': 'Master',
-        'Dr': 'Rare',
-        'Rev': 'Rare',
-        'Col': 'Rare',
-        'Major': 'Rare',
-        'Mlle': 'Miss',
-        'Countess': 'Rare',
-        'Ms': 'Miss',
-        'Lady': 'Rare',
-        'Jonkheer': 'Rare',
-        'Don': 'Rare',
-        'Dona': 'Rare',
-        'Mme': 'Mrs',
-        'Capt': 'Rare',
-        'Sir': 'Rare'
-    }
-    df['Title'] = df['Title'].map(title_mapping)
-    df['Title'].fillna('Rare', inplace=True)
+        # 合并稀有头衔
+        title_mapping = {
+            'Mr': 'Mr',
+            'Miss': 'Miss',
+            'Mrs': 'Mrs',
+            'Master': 'Master',
+            'Dr': 'Rare',
+            'Rev': 'Rare',
+            'Col': 'Rare',
+            'Major': 'Rare',
+            'Mlle': 'Miss',
+            'Countess': 'Rare',
+            'Ms': 'Miss',
+            'Lady': 'Rare',
+            'Jonkheer': 'Rare',
+            'Don': 'Rare',
+            'Dona': 'Rare',
+            'Mme': 'Mrs',
+            'Capt': 'Rare',
+            'Sir': 'Rare'
+        }
+        df['Title'] = df['Title'].map(title_mapping)
+        df['Title'] = df['Title'].fillna('Rare')
 
-    # 2.4 年龄分组
+        # 编码头衔
+        df['Title'] = LabelEncoder().fit_transform(df['Title'])
+    else:
+        df['Title'] = 0
+
+    # 3.4 年龄分组
     # 为什么：不同年龄段的生存率差异大（儿童优先）
-    df['Age_Group'] = pd.cut(df['Age'],
-                             bins=[0, 12, 18, 35, 60, 100],
-                             labels=['Child', 'Teen', 'Adult', 'Middle', 'Senior'])
+    if 'Age' in df.columns:
+        df['Age_Group'] = pd.cut(df['Age'],
+                                 bins=[0, 12, 18, 35, 60, 100],
+                                 labels=['Child', 'Teen', 'Adult', 'Middle', 'Senior'])
+        df['Age_Group'] = LabelEncoder().fit_transform(df['Age_Group'])
+    else:
+        df['Age_Group'] = 2  # 默认为Adult
 
-    # 2.5 票价分组
+    # 3.5 票价分组
     # 为什么：票价反映了社会地位，与生存率相关
-    df['Fare_Group'] = pd.qcut(df['Fare'],
-                               q=4,
-                               labels=['Low', 'Medium', 'High', 'Very_High'],
-                               duplicates='drop')
+    if 'Fare' in df.columns:
+        df['Fare_Group'] = pd.qcut(df['Fare'],
+                                   q=4,
+                                   labels=['Low', 'Medium', 'High', 'Very_High'],
+                                   duplicates='drop')
+        df['Fare_Group'] = LabelEncoder().fit_transform(df['Fare_Group'])
+    else:
+        df['Fare_Group'] = 1  # 默认为Medium
 
     # ============================================
-    # 3. 类别编码
+    # 4. 类别编码
     # ============================================
 
-    # 3.1 性别编码
+    # 4.1 性别编码
     # 为什么用Label Encoding：XGBoost可以自动处理有序关系
-    df['Sex'] = LabelEncoder().fit_transform(df['Sex'])
-
-    # 3.2 登船港口编码
-    df['Embarked'] = LabelEncoder().fit_transform(df['Embarked'])
-
-    # 3.3 头衔编码
-    df['Title'] = LabelEncoder().fit_transform(df['Title'])
-
-    # 3.4 年龄分组编码
-    df['Age_Group'] = LabelEncoder().fit_transform(df['Age_Group'])
-
-    # 3.5 票价分组编码
-    df['Fare_Group'] = LabelEncoder().fit_transform(df['Fare_Group'])
+    if 'Sex' in df.columns:
+        df['Sex'] = LabelEncoder().fit_transform(df['Sex'])
 
     # ============================================
-    # 4. 选择最终特征
+    # 5. 选择最终特征
     # ============================================
 
     # 选择用于建模的特征
@@ -207,17 +238,21 @@ def preprocess_data(df):
         'Pclass',           # 船舱等级
         'Sex',              # 性别
         'Age',              # 年龄
-        'SibSp',            # 兄弟姐妹/配偶数量
-        'Parch',            # 父母/子女数量
         'Fare',             # 票价
-        'Embarked',         # 登船港口
         'Family_Size',      # 家庭规模
         'Is_Alone',         # 是否独自一人
         'Has_Cabin',        # 是否有船舱号
         'Title',            # 头衔
         'Age_Group',        # 年龄分组
         'Fare_Group',       # 票价分组
+        'Embarked',         # 登船港口
     ]
+
+    # 如果原数据有SibSp和Parch，也保留它们
+    if 'SibSp' in df.columns:
+        features.insert(3, 'SibSp')
+    if 'Parch' in df.columns:
+        features.insert(4, 'Parch')
 
     # 如果有Survived列，保留它
     if 'Survived' in df.columns:
