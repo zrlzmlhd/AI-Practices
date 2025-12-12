@@ -1,0 +1,44 @@
+name: Update GitHub trend chart
+
+on:
+  schedule:
+    - cron: '15 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install minimal dependencies
+        run: pip install --upgrade pip && pip install matplotlib requests
+
+      - name: Generate chart
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python utils/metrics/github_trends.py \
+            --owner zimingttkx --repo AI-Practices \
+            --output docs/assets/github-trends.svg \
+            --data-output docs/assets/github-trends.json
+
+      - name: Commit chart
+        run: |
+          if [[ -n "$(git status --porcelain docs/assets/github-trends.svg docs/assets/github-trends.json)" ]]; then
+            git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git config --global user.name "github-actions[bot]"
+            git add docs/assets/github-trends.svg docs/assets/github-trends.json
+            git commit -m "chore: update GitHub trend chart"
+            git push
+          else
+            echo "No chart changes detected"
+          fi
