@@ -32,7 +32,7 @@ def plot_training_history(
     metrics: Optional[List[str]] = None,
     figsize: tuple = (12, 4),
     title_prefix: str = ''
-) -> None:
+):
     """
     绘制训练历史曲线
 
@@ -42,9 +42,13 @@ def plot_training_history(
         figsize: 图形大小
         title_prefix: 标题前缀
 
+    Returns:
+        matplotlib.figure.Figure: 生成的图形对象
+
     Example:
         >>> history = model.fit(X, y, validation_data=(X_val, y_val))
-        >>> plot_training_history(history.history)
+        >>> fig = plot_training_history(history.history)
+        >>> fig.savefig('history.png')
     """
     setup_chinese_font()
 
@@ -82,7 +86,7 @@ def plot_training_history(
         ax.grid(True, alpha=0.3, linestyle='--')
 
     plt.tight_layout()
-    plt.show()
+    return fig
 
 
 def plot_confusion_matrix(
