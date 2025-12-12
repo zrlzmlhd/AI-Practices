@@ -1,14 +1,14 @@
 """
 Transformer机器翻译评估脚本
 
-使用方法:
+评估指标：
+- BLEU分数（机器翻译标准评估指标）
+- 词级准确率
+- 翻译样本展示与分析
+
+使用方法：
     python src/evaluate.py --model_path models/transformer_translation_model.h5 --processor_path models/translation_processor.pkl
     python src/evaluate.py --test_src data/test.en --test_tgt data/test.zh
-
-【评估指标】:
-- BLEU分数（机器翻译标准指标）
-- 词级准确率
-- 翻译样本展示
 """
 
 import sys
@@ -24,7 +24,13 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from src.data import TranslationDataProcessor
-from src.model import TransformerTranslationModel
+from src.model import (
+    TransformerTranslationModel,
+    TransformerEncoder,
+    TransformerDecoder,
+    PositionalEncoding,
+    CustomSchedule
+)
 
 
 def parse_args():
@@ -53,11 +59,11 @@ def calculate_bleu_score(references, hypotheses, max_n=4):
     """
     计算BLEU分数
 
-    【是什么】：机器翻译质量评估的标准指标
-    【如何计算】：
-        - 计算n-gram精确率（n=1,2,3,4）
-        - 应用简短惩罚（BP）
-        - BLEU = BP * exp(sum(log(p_n)))
+    BLEU (Bilingual Evaluation Understudy) 是机器翻译质量评估的标准指标。
+    计算公式：BLEU = BP * exp(sum(log(p_n)))
+    其中：
+    - p_n: n-gram精确率
+    - BP: 简短惩罚因子（Brevity Penalty）
 
     Args:
         references: 参考翻译列表（每个是词列表）
@@ -65,7 +71,7 @@ def calculate_bleu_score(references, hypotheses, max_n=4):
         max_n: 最大n-gram长度
 
     Returns:
-        BLEU分数字典
+        包含各项BLEU指标的字典
     """
     from collections import defaultdict
 
@@ -135,10 +141,10 @@ def translate_and_evaluate(model, processor, src_sequences, tgt_sequences):
     """
     翻译并评估
 
-    【流程】：
-    1. 对每个源句子进行翻译
-    2. 与参考翻译对比
-    3. 计算BLEU分数
+    完整评估流程：
+    1. 对测试集每个句子进行翻译
+    2. 与参考翻译进行对比
+    3. 计算BLEU分数等评估指标
     """
     print("\n" + "="*60)
     print("翻译测试集")
@@ -184,8 +190,8 @@ def display_translation_samples(processor, src_sequences, references, hypotheses
     """
     展示翻译样本
 
-    【是什么】：对比源句子、参考翻译和模型翻译
-    【为什么】：直观评估翻译质量
+    对比展示源句子、参考翻译和模型翻译，
+    用于直观评估模型的翻译质量
     """
     print("\n" + "="*60)
     print("翻译样本展示")
@@ -210,9 +216,9 @@ def display_translation_samples(processor, src_sequences, references, hypotheses
 
 def plot_bleu_scores(bleu_scores, save_path):
     """
-    绘制BLEU分数
+    绘制BLEU分数柱状图
 
-    【可视化】：展示不同n-gram的BLEU分数
+    可视化展示不同n-gram的BLEU分数
     """
     fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -244,8 +250,8 @@ def analyze_translation_length(references, hypotheses, save_path):
     """
     分析翻译长度分布
 
-    【是什么】：对比参考翻译和模型翻译的长度
-    【为什么】：检查模型是否倾向于生成过长或过短的翻译
+    对比参考翻译和模型翻译的句子长度分布，
+    检查模型是否存在长度偏差（过长或过短）
     """
     ref_lengths = [len(ref) for ref in references]
     hyp_lengths = [len(hyp) for hyp in hypotheses]
@@ -304,8 +310,18 @@ def main():
     print(f"  源语言词汇表: {len(processor.src_word2idx)}")
     print(f"  目标语言词汇表: {len(processor.tgt_word2idx)}")
 
-    # 加载模型
-    model = keras.models.load_model(args.model_path)
+    # 加载模型（注册自定义对象，跳过编译状态）
+    custom_objects = {
+        'TransformerEncoder': TransformerEncoder,
+        'TransformerDecoder': TransformerDecoder,
+        'PositionalEncoding': PositionalEncoding,
+        'CustomSchedule': CustomSchedule
+    }
+    model = keras.models.load_model(
+        args.model_path,
+        custom_objects=custom_objects,
+        compile=False  # 跳过编译，避免自定义损失函数序列化问题
+    )
     print(f"✓ 模型已加载")
 
     # 重新包装为TransformerTranslationModel

@@ -216,18 +216,11 @@ class TransformerTextClassifier:
         Returns:
             Keras模型
         """
-        # ============================================
-        # 输入层
-        # ============================================
-        # 【是什么】：词ID序列
-        # 【形状】：(batch, seq_len)
+        # 输入层：词ID序列 (batch, seq_len)
         inputs = layers.Input(shape=(self.max_len,), dtype=tf.int32, name='input_ids')
 
         # ============================================
         # Transformer编码器
-        # ============================================
-        # 【是什么】：多层Transformer编码器
-        # 【做什么】：将词序列编码为上下文表示
         encoder = TransformerEncoder(
             num_layers=self.config['num_layers'],
             d_model=self.config['d_model'],
@@ -238,14 +231,14 @@ class TransformerTextClassifier:
             dropout_rate=self.config['dropout_rate']
         )
 
-        # 创建padding掩码
-        # 【是什么】：遮蔽padding位置
-        # 【为什么】：padding位置不应该被关注
-        mask = create_padding_mask(inputs)
+        # 创建padding掩码层（使用Lambda包装）
+        mask = layers.Lambda(
+            lambda x: tf.cast(tf.math.equal(x, 0), tf.float32)[:, tf.newaxis, tf.newaxis, :],
+            name='padding_mask'
+        )(inputs)
 
         # 编码
         encoder_output = encoder(inputs, mask=mask)
-        # 形状: (batch, seq_len, d_model)
 
         # ============================================
         # 池化层

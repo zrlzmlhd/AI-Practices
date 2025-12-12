@@ -1,13 +1,14 @@
 """
-NER数据处理模块
+命名实体识别数据处理模块
 
-本模块负责：
-1. 加载CoNLL-2003数据集
-2. 构建词汇表和标签映射
-3. 序列填充和编码
-4. 数据集划分
+本模块提供NER任务的数据处理功能:
+- 加载CoNLL格式数据集(CoNLL-2003标准数据集)
+- 构建词汇表和BIO标签映射
+- 序列编码、填充和掩码生成
+- 训练集、验证集、测试集划分
 
-使用CoNLL-2003数据集（公开标准NER数据集）
+CoNLL-2003是命名实体识别的标准评测数据集,包含4类实体:
+PER(人名)、ORG(组织)、LOC(地点)、MISC(其他)
 """
 
 import numpy as np
@@ -20,17 +21,16 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 class NERDataProcessor:
     """
-    NER数据处理器
+    命名实体识别数据处理器
 
-    【是什么】：处理命名实体识别数据的工具类
-    【做什么】：
-        - 加载CoNLL格式数据
-        - 构建词汇表和标签映射
-        - 序列编码和填充
-    【为什么】：
-        - NER是序列标注任务
-        - 需要对齐词和标签
-        - 需要特殊的数据处理
+    提供完整的NER数据处理pipeline,包括:
+    - CoNLL格式数据加载和解析
+    - 词汇表和标签体系构建
+    - 序列编码、填充和掩码生成
+    - 预测结果解码
+
+    NER作为序列标注任务,要求词序列和标签序列严格对齐,
+    因此需要专门的数据处理逻辑来保证对齐关系。
     """
 
     def __init__(self, max_len=128, max_vocab_size=10000):
@@ -63,12 +63,11 @@ class NERDataProcessor:
         self.tag2idx = {}
         self.idx2tag = {}
 
-        # CoNLL-2003标签体系
-        # 【是什么】：BIO标注格式
-        # 【B】：Begin（实体开始）
-        # 【I】：Inside（实体内部）
-        # 【O】：Outside（非实体）
-        # 【实体类型】：PER（人名）、ORG（组织）、LOC（地点）、MISC（其他）
+        # CoNLL-2003标签体系: BIO标注格式
+        # B (Begin): 实体开始位置
+        # I (Inside): 实体内部位置
+        # O (Outside): 非实体位置
+        # 实体类型: PER(人名)、ORG(组织)、LOC(地点)、MISC(其他)
         self.default_tags = [
             'O',           # 非实体
             'B-PER',       # 人名-开始
@@ -85,25 +84,26 @@ class NERDataProcessor:
         """
         加载CoNLL格式数据
 
-        【CoNLL格式】：
-        每行一个词和标签，用空格或制表符分隔
-        句子之间用空行分隔
+        CoNLL格式说明:
+        - 每行包含一个词和对应的标签,用空格或制表符分隔
+        - 句子之间用空行分隔
+        - 注释行以'-DOCSTART-'开头
 
-        示例：
-        EU    B-ORG
-        rejects    O
-        German    B-MISC
-        call    O
+        数据示例:
+            EU          B-ORG
+            rejects     O
+            German      B-MISC
+            call        O
 
-        British    B-MISC
-        ...
+            British     B-MISC
+            ...
 
         Args:
             file_path: 数据文件路径
 
         Returns:
-            sentences: 句子列表
-            tags: 标签列表
+            sentences: 句子列表,每个句子是词的列表
+            tags: 标签列表,每个标签序列与句子一一对应
         """
         print(f"\n加载CoNLL数据: {file_path}")
 
@@ -264,18 +264,19 @@ class NERDataProcessor:
 
     def pad_sequences(self, sequences, tags=None):
         """
-        填充序列
+        填充序列到固定长度
 
-        【重要】：标签也需要填充，且填充值通常是0（对应'O'标签）
+        注意: NER任务中,标签序列也需要填充,且填充值通常设为0(对应'O'标签)。
+        同时生成掩码矩阵用于区分真实位置和填充位置,这在计算损失和评估时很重要。
 
         Args:
-            sequences: 序列列表
-            tags: 标签列表（可选）
+            sequences: 编码后的词序列列表
+            tags: 编码后的标签序列列表(可选)
 
         Returns:
-            padded_sequences: 填充后的序列
-            padded_tags: 填充后的标签
-            mask: 填充掩码
+            padded_sequences: 填充后的词序列,shape=(n_samples, max_len)
+            padded_tags: 填充后的标签序列,shape=(n_samples, max_len)
+            mask: 填充掩码,1表示真实词,0表示填充,shape=(n_samples, max_len)
         """
         print("\n填充序列...")
 

@@ -1,0 +1,7 @@
+model_type: simple_lstm
+train_loss: 0.5005267262458801
+train_accuracy: 0.7590000033378601
+val_loss: 0.5305712223052979
+val_accuracy: 0.7257999777793884
+test_loss: 0.5271466374397278
+test_accuracy: 0.7276800274848938

@@ -1,32 +1,44 @@
 """
-Transformer NER模型
+Transformer命名实体识别模型
 
-本模块实现：
-1. 基础Transformer NER模型
-2. Transformer + CRF模型
-3. BiLSTM + CRF模型（对比）
+本模块实现三种NER模型架构:
+1. 基础Transformer编码器模型
+2. Transformer + CRF层模型
+3. BiLSTM + CRF模型(作为对比基线)
 
-每个模型都有详细的注释说明设计思路和参数选择。
+每个模型都包含详细的参数说明和设计思路注释。
+
+技术说明:
+- CRF层依赖tensorflow-addons包,如遇兼容性问题可使用基础模型
+- 所有模型都支持掩码机制来处理填充位置
+- 提供完整的训练、预测和评估接口
 """
 
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
-import tensorflow_addons as tfa
+try:
+    import tensorflow_addons as tfa
+    HAS_TFA = True
+except (ImportError, ModuleNotFoundError):
+    HAS_TFA = False
+    print("警告: tensorflow_addons未安装或不兼容，CRF功能将不可用")
 from sklearn.metrics import classification_report, f1_score
 
 
 class TransformerNERModel:
     """
-    Transformer NER模型
+    基于Transformer的命名实体识别模型
 
-    【是什么】：基于Transformer的命名实体识别模型
-    【做什么】：序列标注，为每个词预测实体标签
-    【为什么】：
-        - Transformer捕获长距离依赖
-        - 自注意力机制理解上下文
-        - 适合序列标注任务
+    实现完整的NER模型,包括:
+    - Transformer编码器: 捕获长距离依赖和上下文信息
+    - CRF层(可选): 建模标签之间的转移约束
+    - BiLSTM编码器(可选): 作为传统模型对比基线
+
+    Transformer通过自注意力机制能够有效捕获句子中的长距离依赖关系,
+    相比传统RNN模型在处理长序列时更有优势。CRF层可以确保输出标签序列
+    满足BIO标注规则(如B-PER后不能直接跟I-ORG)。
     """
 
     def __init__(self,
@@ -61,37 +73,29 @@ class TransformerNERModel:
         self.model = self._build_model()
 
     def _get_model_config(self, model_type):
-        """获取模型配置"""
+        """获取不同模型类型的配置参数"""
         configs = {
             'transformer': {
                 # ============================================
-                # Transformer配置
+                # Transformer编码器配置
                 # ============================================
                 'd_model': 128,
-                # 【为什么=128】：
-                #   - NER任务相对简单
-                #   - 128维足够捕获实体特征
-                #   - 训练速度快
+                # 模型维度设为128: NER任务相对简单,128维足够捕获实体特征,
+                # 同时保证训练效率
 
                 'num_heads': 4,
-                # 【为什么=4】：
-                #   - d_model=128，每个头32维
-                #   - 4个头学习不同的上下文模式
+                # 注意力头数设为4: d_model=128时每个头32维,4个头可以学习
+                # 不同的上下文模式(如实体边界、词性、语义等)
 
                 'num_layers': 2,
-                # 【为什么=2】：
-                #   - 2层足够学习实体边界
-                #   - 避免过拟合
+                # 编码器层数设为2: 2层足够学习实体边界和类型特征,
+                # 避免过深导致过拟合
 
                 'd_ff': 512,
-                # 【为什么=512】：
-                #   - d_model的4倍
-                #   - 标准配置
+                # 前馈网络维度512: 标准配置为d_model的4倍
 
                 'dropout': 0.1,
-                # 【为什么=0.1】：
-                #   - 轻度正则化
-                #   - NER数据通常不大
+                # Dropout率0.1: 轻度正则化,适合小规模NER数据集
 
                 'use_crf': False,
             },
@@ -103,44 +107,36 @@ class TransformerNERModel:
                 'd_model': 128,
                 'num_heads': 4,
                 'num_layers': 3,
-                # 【为什么=3】：
-                #   - CRF会增加模型能力
-                #   - 可以用更深的编码器
+                # 增加到3层: CRF层已经提供了标签依赖建模能力,
+                # 可以使用更深的编码器来提取更丰富的特征
 
                 'd_ff': 512,
                 'dropout': 0.2,
-                # 【为什么=0.2】：
-                #   - 更深的模型需要更强正则化
+                # Dropout率0.2: 更深的模型需要更强的正则化
 
                 'use_crf': True,
-                # 【为什么使用CRF】：
-                #   - 考虑标签之间的依赖关系
-                #   - B-PER后面不能直接跟I-ORG
-                #   - 提升标注一致性
+                # 使用CRF层: 建模标签转移概率,确保标签序列满足BIO约束
+                # (如B-PER后只能跟I-PER或O,不能跟I-ORG)
             },
 
             'bilstm_crf': {
                 # ============================================
-                # BiLSTM + CRF配置（对比基线）
+                # BiLSTM + CRF配置(传统NER架构,用作对比基线)
                 # ============================================
                 'lstm_units': 128,
-                # 【为什么=128】：
-                #   - 与Transformer的d_model对齐
-                #   - 公平对比
+                # LSTM单元数128: 与Transformer的d_model对齐,保证公平对比
 
                 'num_layers': 2,
                 'dropout': 0.2,
                 'use_crf': True,
-                # 【为什么BiLSTM+CRF】：
-                #   - 经典NER架构
-                #   - 作为对比基线
+                # BiLSTM+CRF是经典的NER架构,曾是该任务的主流方法
             }
         }
 
         return configs.get(model_type, configs['transformer'])
 
     def _build_model(self):
-        """构建模型"""
+        """构建NER模型架构"""
         # ============================================
         # 输入层
         # ============================================
@@ -150,10 +146,8 @@ class TransformerNERModel:
         # ============================================
         # 词嵌入层
         # ============================================
-        # 【是什么】：将词ID转换为稠密向量
-        # 【为什么】：
-        #   - 词嵌入捕获词的语义
-        #   - 可训练的表示
+        # 将词ID转换为稠密向量表示,捕获词的语义信息
+        # 使用mask_zero=True自动处理填充位置
         if self.model_type.startswith('transformer'):
             d_model = self.config['d_model']
             embedding = layers.Embedding(
@@ -163,10 +157,8 @@ class TransformerNERModel:
                 name='embedding'
             )(input_ids)
 
-            # 位置编码
-            # 【为什么需要】：
-            #   - Transformer没有位置信息
-            #   - 需要显式添加位置编码
+            # 位置编码: Transformer没有内置的位置信息,
+            # 需要显式添加位置编码来提供序列顺序信息
             positions = tf.range(start=0, limit=self.max_len, delta=1)
             position_embedding = layers.Embedding(
                 self.max_len,
@@ -233,19 +225,16 @@ class TransformerNERModel:
         # ============================================
         if self.config.get('use_crf', False):
             # ============================================
-            # CRF层
+            # CRF层(条件随机场)
             # ============================================
-            # 【是什么】：条件随机场
-            # 【做什么】：考虑标签之间的转移概率
-            # 【为什么】：
-            #   - 标签有依赖关系（如B-PER后只能跟I-PER或O）
-            #   - 提升标注一致性
-            #   - 避免非法标签序列
+            # CRF层对整个标签序列建模,考虑标签之间的转移概率。
+            # 这可以避免非法的标签序列(如B-PER后直接跟I-ORG),
+            # 提升标注的一致性和准确率。
 
-            # Dense层输出logits
+            # Dense层输出每个位置的标签logits
             logits = layers.Dense(self.num_tags, name='logits')(x)
 
-            # CRF层
+            # CRF层学习标签转移矩阵
             crf = tfa.layers.CRF(self.num_tags, name='crf')
             outputs = crf(logits)
 
@@ -256,17 +245,15 @@ class TransformerNERModel:
                 name=f'ner_{self.model_type}'
             )
 
-            # 保存CRF层（用于解码）
+            # 保存CRF层引用,用于后续的Viterbi解码
             self.crf_layer = crf
 
         else:
             # ============================================
-            # Softmax输出
+            # Softmax输出层
             # ============================================
-            # 【是什么】：每个位置独立预测标签
-            # 【为什么】：
-            #   - 简单直接
-            #   - 不考虑标签依赖
+            # 每个位置独立预测标签,不考虑标签之间的依赖关系。
+            # 实现简单直接,训练速度快。
 
             outputs = layers.Dense(
                 self.num_tags,
@@ -283,22 +270,19 @@ class TransformerNERModel:
         return model
 
     def compile_model(self, learning_rate=0.001):
-        """编译模型"""
+        """编译模型,设置优化器和损失函数"""
         optimizer = keras.optimizers.Adam(learning_rate=learning_rate)
 
         if self.config.get('use_crf', False):
-            # CRF模型使用特殊的损失函数
-            # 【是什么】：负对数似然损失
-            # 【为什么】：
-            #   - CRF需要考虑整个序列
-            #   - 不能用普通的交叉熵
+            # CRF模型使用负对数似然损失(Negative Log-Likelihood)
+            # CRF需要对整个序列建模,不能使用普通的逐位置交叉熵损失
             self.model.compile(
                 optimizer=optimizer,
                 loss=self.crf_layer.loss,
                 metrics=[self.crf_layer.accuracy]
             )
         else:
-            # 普通模型使用交叉熵
+            # 基础模型使用稀疏分类交叉熵损失
             self.model.compile(
                 optimizer=optimizer,
                 loss='sparse_categorical_crossentropy',
@@ -346,31 +330,28 @@ class TransformerNERModel:
 
     def predict(self, X, mask):
         """
-        预测
+        预测标签序列
 
         Args:
-            X: 输入序列
-            mask: 掩码
+            X: 输入序列,shape=(batch_size, max_len)
+            mask: 掩码矩阵,shape=(batch_size, max_len)
 
         Returns:
-            预测的标签
+            predictions: 预测的标签ID,shape=(batch_size, max_len)
         """
         if self.config.get('use_crf', False):
-            # CRF模型需要特殊的解码
-            # 【是什么】：Viterbi解码
-            # 【为什么】：
-            #   - 找到最优标签序列
-            #   - 考虑转移概率
+            # CRF模型使用Viterbi算法解码最优标签序列
+            # Viterbi算法通过动态规划找到全局最优的标签序列
             predictions = self.model.predict([X, mask])
         else:
-            # 普通模型直接argmax
+            # 基础模型对每个位置独立取概率最大的标签
             predictions = self.model.predict([X, mask])
             predictions = np.argmax(predictions, axis=-1)
 
         return predictions
 
     def evaluate(self, X, y, mask):
-        """评估模型"""
+        """评估模型性能"""
         results = self.model.evaluate([X, mask], y, verbose=0)
 
         metrics = {}
@@ -383,16 +364,17 @@ class TransformerNERModel:
         """
         计算F1分数
 
-        【重要】：NER任务通常使用实体级别的F1分数
+        NER任务通常使用实体级别的F1分数作为主要评估指标,
+        相比准确率能更好地反映模型在实体识别上的性能。
 
         Args:
-            y_true: 真实标签
-            y_pred: 预测标签
-            mask: 掩码
-            idx2tag: 标签映射
+            y_true: 真实标签,shape=(batch_size, max_len)
+            y_pred: 预测标签,shape=(batch_size, max_len)
+            mask: 掩码矩阵,shape=(batch_size, max_len)
+            idx2tag: 标签ID到标签名的映射
 
         Returns:
-            F1分数字典
+            F1分数字典,包含micro和macro平均
         """
         # 展平并过滤填充位置
         y_true_flat = []
@@ -461,7 +443,15 @@ if __name__ == '__main__':
     mask_val = np.ones((20, max_len), dtype=np.float32)
 
     # 测试三种模型
-    for model_type in ['transformer', 'transformer_crf', 'bilstm_crf']:
+    model_types = ['transformer']
+    if HAS_TFA:
+        model_types.extend(['transformer_crf', 'bilstm_crf'])
+    else:
+        print("\n" + "="*60)
+        print("注意: CRF模型测试已跳过(tensorflow-addons不可用)")
+        print("="*60)
+
+    for model_type in model_types:
         print(f"\n{'='*60}")
         print(f"测试 {model_type} 模型")
         print(f"{'='*60}")

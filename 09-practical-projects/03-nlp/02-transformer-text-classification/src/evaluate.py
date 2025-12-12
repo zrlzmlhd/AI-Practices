@@ -393,7 +393,7 @@ def main():
     print("评估完成！")
     print("="*60)
 
-    print(f"\n生成的文件:")
+    print(f"\n保存的文件:")
     print(f"  1. 混淆矩阵: {cm_path}")
     print(f"  2. ROC曲线: {roc_path}")
     print(f"  3. 预测分布: {dist_path}")

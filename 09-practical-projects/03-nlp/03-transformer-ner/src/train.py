@@ -1,9 +1,19 @@
 """
-Transformer NER模型训练脚本
+Transformer命名实体识别模型训练脚本
+
+支持三种模型架构:
+- transformer: 基础Transformer编码器
+- transformer_crf: Transformer + CRF层
+- bilstm_crf: BiLSTM + CRF(对比基线)
 
 使用方法:
+    # 训练基础Transformer模型
     python src/train.py --model_type transformer --epochs 30
+
+    # 训练Transformer+CRF模型
     python src/train.py --model_type transformer_crf --epochs 50
+
+    # 训练BiLSTM+CRF模型
     python src/train.py --model_type bilstm_crf --epochs 50
 """
 

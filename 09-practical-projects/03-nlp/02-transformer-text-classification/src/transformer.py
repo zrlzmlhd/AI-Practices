@@ -369,7 +369,7 @@ class TransformerEncoder(layers.Layer):
         #   - 第2-3层：学习短语级别的模式
         #   - 第4-6层：学习句子级别的语义
         for encoder_layer in self.encoder_layers:
-            x = encoder_layer(x, mask, training)
+            x = encoder_layer(x, mask=mask, training=training)
 
         return x  # (batch, seq_len, d_model)
 

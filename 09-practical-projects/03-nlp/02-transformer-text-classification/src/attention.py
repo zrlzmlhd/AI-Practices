@@ -1,12 +1,13 @@
 """
 Transformer注意力机制实现
 
-本模块包含Transformer的核心组件：
-1. Scaled Dot-Product Attention（缩放点积注意力）
-2. Multi-Head Attention（多头注意力）
-3. Positional Encoding（位置编码）
+实现Transformer架构的核心组件：
+- Scaled Dot-Product Attention: 计算序列元素间的注意力权重
+- Multi-Head Attention: 并行使用多个注意力头学习不同的表示子空间
+- Positional Encoding: 为序列位置添加正弦/余弦位置编码
 
-每个组件都有详细的注释说明原理和实现细节。
+参考文献:
+    Vaswani et al. "Attention Is All You Need" (2017)
 """
 
 import numpy as np
@@ -17,17 +18,12 @@ from tensorflow.keras import layers
 
 class ScaledDotProductAttention(layers.Layer):
     """
-    缩放点积注意力（Scaled Dot-Product Attention）
+    缩放点积注意力机制
 
-    这是Transformer的核心机制，用于计算序列中每个位置对其他位置的注意力权重。
+    实现公式: Attention(Q, K, V) = softmax(QK^T / sqrt(d_k))V
 
-    公式：Attention(Q, K, V) = softmax(Q·K^T / sqrt(d_k)) · V
-
-    参数说明：
-    - Q (Query): 查询向量，表示"我要找什么"
-    - K (Key): 键向量，表示"我是什么"
-    - V (Value): 值向量，表示"我的内容是什么"
-    - d_k: Key的维度，用于缩放
+    通过计算Query和Key的相似度来确定Value的加权组合，
+    缩放因子sqrt(d_k)用于稳定梯度传播。
     """
 
     def __init__(self, **kwargs):
@@ -38,92 +34,32 @@ class ScaledDotProductAttention(layers.Layer):
         计算缩放点积注意力
 
         Args:
-            query: Query矩阵，形状 (batch, seq_len_q, d_k)
-            key: Key矩阵，形状 (batch, seq_len_k, d_k)
-            value: Value矩阵，形状 (batch, seq_len_v, d_v)
-            mask: 掩码，用于遮蔽某些位置（如padding）
+            query: 查询矩阵 (batch, seq_len_q, d_k)
+            key: 键矩阵 (batch, seq_len_k, d_k)
+            value: 值矩阵 (batch, seq_len_v, d_v)
+            mask: 注意力掩码，用于屏蔽padding或未来位置
 
         Returns:
-            output: 注意力输出，形状 (batch, seq_len_q, d_v)
-            attention_weights: 注意力权重，形状 (batch, seq_len_q, seq_len_k)
+            output: 注意力输出 (batch, seq_len_q, d_v)
+            attention_weights: 注意力权重 (batch, seq_len_q, seq_len_k)
         """
-
-        # ============================================
-        # 步骤1: 计算注意力分数 (Q · K^T)
-        # ============================================
-        # 【是什么】：Query和Key的点积
-        # 【做什么】：计算Query和每个Key的相似度
-        # 【为什么】：相似度高的Key应该获得更多关注
-        #
-        # 例子：句子 "我 爱 你"
-        # Query="爱" 与所有Key的相似度：
-        #   "我": 0.3 (中等相关)
-        #   "爱": 1.0 (自己最相关)
-        #   "你": 0.8 (高度相关，爱的对象)
+        # 计算注意力分数: Q·K^T
         matmul_qk = tf.matmul(query, key, transpose_b=True)
-        # 形状: (batch, seq_len_q, seq_len_k)
 
-        # ============================================
-        # 步骤2: 缩放 (除以 sqrt(d_k))
-        # ============================================
-        # 【是什么】：将分数除以sqrt(d_k)
-        # 【做什么】：缩放点积值到合理范围
-        # 【为什么】：
-        #   - 问题：d_k很大时，点积值会很大
-        #   - 后果：softmax后梯度很小（梯度消失）
-        #   - 解决：除以sqrt(d_k)进行缩放
-        #   - 效果：保持梯度在合理范围
-        #
-        # 数学原理：
-        #   假设Q和K的元素是独立的，均值0，方差1
-        #   则Q·K的方差是d_k
-        #   除以sqrt(d_k)后，方差变为1
+        # 缩放：除以sqrt(d_k)防止梯度消失
+        # 当d_k较大时，点积结果的方差为d_k，缩放后方差归一化为1
         d_k = tf.cast(tf.shape(key)[-1], tf.float32)
         scaled_attention_logits = matmul_qk / tf.math.sqrt(d_k)
 
-        # ============================================
-        # 步骤3: 应用掩码（可选）
-        # ============================================
-        # 【是什么】：将某些位置的分数设为-inf
-        # 【做什么】：遮蔽padding位置或未来位置
-        # 【为什么】：
-        #   - Padding位置：不应该被关注（没有实际内容）
-        #   - 未来位置：解码器不能看到未来（防止作弊）
+        # 应用掩码（将需要屏蔽的位置设为极小值）
         if mask is not None:
             scaled_attention_logits += (mask * -1e9)
 
-        # ============================================
-        # 步骤4: Softmax归一化
-        # ============================================
-        # 【是什么】：将分数转换为概率分布
-        # 【做什么】：归一化，使所有权重和为1
-        # 【为什么】：
-        #   - 概率解释：每个位置的重要性
-        #   - 和为1：便于加权求和
-        #
-        # 例子：
-        #   分数: [2.0, 5.0, 3.0]
-        #   Softmax: [0.09, 0.67, 0.24]  # 和为1
+        # Softmax归一化得到注意力权重
         attention_weights = tf.nn.softmax(scaled_attention_logits, axis=-1)
-        # 形状: (batch, seq_len_q, seq_len_k)
 
-        # ============================================
-        # 步骤5: 加权求和 (Attention_Weights · V)
-        # ============================================
-        # 【是什么】：用注意力权重对Value加权求和
-        # 【做什么】：根据重要性组合信息
-        # 【为什么】：
-        #   - 重要的位置权重高，贡献大
-        #   - 不重要的位置权重低，贡献小
-        #   - 最终输出是所有位置的加权组合
-        #
-        # 例子：
-        #   权重: [0.1, 0.6, 0.3]
-        #   Value: [[1,2], [3,4], [5,6]]
-        #   输出: 0.1*[1,2] + 0.6*[3,4] + 0.3*[5,6]
-        #       = [3.4, 4.4]  # 重点关注第2个位置
+        # 使用注意力权重对Value进行加权求和
         output = tf.matmul(attention_weights, value)
-        # 形状: (batch, seq_len_q, d_v)
 
         return output, attention_weights
 
