@@ -1,41 +1,39 @@
 # Activation Functions - Complete Guide
 
-> **知识密度**：⭐⭐⭐⭐⭐ | **实战价值**：⭐⭐⭐⭐⭐
-> **最后更新**：2025-11-30
+> **Knowledge Density**: High | **Practical Value**: High
+> **Last Updated**: 2025-11-30
 
 ---
 
-
-
-## 📋 本章知识图谱
+## Table of Contents Structure
 
 ```
 Activation Functions - Complete Guide
-├── 核心概念
-│   ├── 基本原理
-│   ├── 数学基础
-│   └── 应用场景
-├── 算法详解
-│   ├── 算法流程
-│   ├── 时间复杂度
-│   └── 空间复杂度
-├── 实战技巧
-│   ├── 参数调优
-│   ├── 性能优化
-│   └── 常见陷阱
-└── 代码实现
-    ├── 基础实现
-    ├── 高级技巧
-    └── 完整示例
+ 
+    
+    
+    
+ 
+    
+    
+    
+ 
+    
+    
+    
+ 
+     
+     
+     
 ```
 
 ---
 
-## 📚 Overview
+##  Overview
 
 Activation functions are the "switches" of neural networks, determining whether and how signals are transmitted through neurons. This comprehensive guide covers 30+ activation functions with theory, mathematics, use cases, and practical recommendations.
 
-## 🎯 Table of Contents
+##  Table of Contents
 
 1. [What Are Activation Functions?](#what-are-activation-functions)
 2. [Why Do We Need Them?](#why-do-we-need-them)
@@ -116,9 +114,9 @@ This collapses to: `y = Wx + b` (a single linear transformation)
 - **Differentiable**: Yes (everywhere)
 
 **When to Use**:
-- ✅ Binary classification output layer (probability interpretation)
-- ✅ Gate mechanisms (LSTM, GRU)
-- ❌ Hidden layers (causes vanishing gradient)
+-  Binary classification output layer (probability interpretation)
+-  Gate mechanisms (LSTM, GRU)
+-  Hidden layers (causes vanishing gradient)
 
 **Advantages**:
 - Smooth, continuous output
@@ -154,9 +152,9 @@ tanh'(x) = 1 - tanh²(x)
 - **Differentiable**: Yes
 
 **When to Use**:
-- ✅ RNN/LSTM hidden states
-- ✅ Output layer for regression in [-1, 1]
-- ⚠️ Hidden layers (better than sigmoid, but still vanishing gradient)
+-  RNN/LSTM hidden states
+-  Output layer for regression in [-1, 1]
+-  Hidden layers (better than sigmoid, but still vanishing gradient)
 
 **Advantages**:
 - Zero-centered (better than sigmoid)
@@ -174,7 +172,7 @@ tanh'(x) = 1 - tanh²(x)
 
 **Formula** (for vector input):
 ```
-softmax(x_i) = e^(x_i) / Σⱼ e^(x_j)
+softmax(x_i) = e^(x_i) / Σ e^(x_j)
 ```
 
 **Properties**:
@@ -183,8 +181,8 @@ softmax(x_i) = e^(x_i) / Σⱼ e^(x_j)
 - **Differentiable**: Yes
 
 **When to Use**:
-- ✅ Multi-class classification output layer (REQUIRED)
-- ❌ Never in hidden layers
+-  Multi-class classification output layer (REQUIRED)
+-  Never in hidden layers
 
 **Advantages**:
 - Converts logits to probabilities
@@ -227,9 +225,9 @@ ReLU'(x) = 1 if x > 0 else 0
 - **Differentiable**: Almost everywhere (not at x=0)
 
 **When to Use**:
-- ✅ Default choice for hidden layers in CNNs, MLPs
-- ✅ When training speed is critical
-- ✅ Deep networks (doesn't saturate for positive values)
+-  Default choice for hidden layers in CNNs, MLPs
+-  When training speed is critical
+-  Deep networks (doesn't saturate for positive values)
 
 **Advantages**:
 - **Computationally efficient**: Simple max operation
@@ -264,9 +262,9 @@ LeakyReLU'(x) = 1 if x > 0 else α
 ```
 
 **When to Use**:
-- ✅ When experiencing dying ReLU problem
-- ✅ As default alternative to ReLU
-- ✅ Deep networks
+-  When experiencing dying ReLU problem
+-  As default alternative to ReLU
+-  Deep networks
 
 **Advantages**:
 - Fixes dying ReLU (always has gradient)
@@ -288,9 +286,9 @@ PReLU(x) = x if x > 0 else αx
 where α is **learnable** (different from Leaky ReLU)
 
 **When to Use**:
-- ✅ When you have enough data to learn α
-- ✅ Small to medium networks
-- ⚠️ Risk of overfitting on small datasets
+-  When you have enough data to learn α
+-  Small to medium networks
+-  Risk of overfitting on small datasets
 
 **Advantages**:
 - Adaptive negative slope
@@ -322,9 +320,9 @@ ELU'(x) = 1 if x > 0 else ELU(x) + α
 - **Smooth**: Continuous derivative
 
 **When to Use**:
-- ✅ Deep networks (better gradient flow)
-- ✅ When training stability is important
-- ✅ RNNs and autoencoders
+-  Deep networks (better gradient flow)
+-  When training stability is important
+-  RNNs and autoencoders
 
 **Advantages**:
 - Negative values push mean activation toward zero
@@ -352,9 +350,9 @@ where λ ≈ 1.0507, α ≈ 1.6733 (specific values for self-normalization)
 - **Requires**: Specific initialization (LeCun normal) and architecture
 
 **When to Use**:
-- ✅ Fully connected networks (Self-Normalizing Neural Networks)
-- ❌ CNNs (doesn't work well)
-- ❌ With Batch Normalization (conflicts)
+-  Fully connected networks (Self-Normalizing Neural Networks)
+-  CNNs (doesn't work well)
+-  With Batch Normalization (conflicts)
 
 **Advantages**:
 - Automatic normalization without BatchNorm
@@ -386,10 +384,10 @@ GELU(x) ≈ 0.5x(1 + tanh[√(2/π)(x + 0.044715x³)])
 - **Non-monotonic**: Has a small dip near x=0
 
 **When to Use**:
-- ✅ Transformers (BERT, GPT, etc.)
-- ✅ Large language models
-- ✅ Vision Transformers
-- ✅ Modern architectures
+-  Transformers (BERT, GPT, etc.)
+-  Large language models
+-  Vision Transformers
+-  Modern architectures
 
 **Advantages**:
 - Smooth, probabilistic interpretation
@@ -425,9 +423,9 @@ SiLU(x) = x × σ(x)  # β = 1
 - **Self-gated**: Output modulated by input
 
 **When to Use**:
-- ✅ Deep networks (alternative to ReLU)
-- ✅ Mobile networks (MobileNet, EfficientNet)
-- ✅ When performance matters more than speed
+-  Deep networks (alternative to ReLU)
+-  Mobile networks (MobileNet, EfficientNet)
+-  When performance matters more than speed
 
 **Advantages**:
 - Often outperforms ReLU
@@ -456,9 +454,9 @@ Mish(x) = x × tanh(softplus(x)) = x × tanh(ln(1 + e^x))
 - **Self-regularizing**: Small negative values allowed
 
 **When to Use**:
-- ✅ Computer vision tasks
-- ✅ When maximum performance is needed
-- ⚠️ Research/experimental (computationally heavy)
+-  Computer vision tasks
+-  When maximum performance is needed
+-  Research/experimental (computationally heavy)
 
 **Advantages**:
 - Often outperforms Swish and ReLU
@@ -485,9 +483,9 @@ where ⊙ is element-wise multiplication
 **Concept**: Split input into two parts - one is the signal, other is the gate
 
 **When to Use**:
-- ✅ Sequence modeling
-- ✅ Language models
-- ✅ Transformer FFN layers
+-  Sequence modeling
+-  Language models
+-  Transformer FFN layers
 
 **Advantages**:
 - Dynamic information flow control
@@ -510,9 +508,9 @@ GeGLU(x) = x ⊙ GELU(Wx + b)
 ```
 
 **When to Use**:
-- ✅ Transformer FFN layers
-- ✅ Large language models (T5, PaLM)
-- ✅ Vision Transformers
+-  Transformer FFN layers
+-  Large language models (T5, PaLM)
+-  Vision Transformers
 
 **Used In**: T5, PaLM, Chinchilla, many modern LLMs
 
@@ -526,9 +524,9 @@ SwiGLU(x) = x ⊙ Swish(Wx + b)
 ```
 
 **When to Use**:
-- ✅ **Current best practice for LLMs**
-- ✅ Llama, Llama2, Llama3
-- ✅ Modern transformer architectures
+-  **Current best practice for LLMs**
+-  Llama, Llama2, Llama3
+-  Modern transformer architectures
 
 **Why It's Popular**:
 - Best performance among GLU variants
@@ -547,8 +545,8 @@ ReGLU(x) = x ⊙ ReLU(Wx + b)
 ```
 
 **When to Use**:
-- ✅ When computational efficiency is critical
-- ⚠️ Generally outperformed by GeGLU/SwiGLU
+-  When computational efficiency is critical
+-  Generally outperformed by GeGLU/SwiGLU
 
 **Advantages**:
 - Faster than GeGLU/SwiGLU
@@ -575,10 +573,10 @@ HardSwish(x) = x × ReLU6(x + 3) / 6
 - Hardware-friendly
 
 **When to Use**:
-- ✅ Mobile deployment (MobileNetV3)
-- ✅ Edge devices
-- ✅ Quantized models
-- ✅ Resource-constrained environments
+-  Mobile deployment (MobileNetV3)
+-  Edge devices
+-  Quantized models
+-  Resource-constrained environments
 
 **Advantages**:
 - Much faster than Swish
@@ -600,9 +598,9 @@ HardSigmoid(x) = clip(0.2x + 0.5, 0, 1)
 ```
 
 **When to Use**:
-- ✅ Mobile/embedded systems
-- ✅ Quantized networks
-- ✅ LSTM/GRU gates on edge devices
+-  Mobile/embedded systems
+-  Quantized networks
+-  LSTM/GRU gates on edge devices
 
 **Advantages**:
 - Very fast (no exponential)
@@ -616,9 +614,9 @@ HardSigmoid(x) = clip(0.2x + 0.5, 0, 1)
 **Concept**: ReLU with quantized outputs (discrete levels)
 
 **When to Use**:
-- ✅ Quantization-aware training (QAT)
-- ✅ INT8/INT4 deployment
-- ✅ Edge AI accelerators
+-  Quantization-aware training (QAT)
+-  INT8/INT4 deployment
+-  Edge AI accelerators
 
 **Advantages**:
 - Enables low-bit inference
@@ -646,9 +644,9 @@ Softplus(x) = ln(1 + e^x)
 - Differentiable everywhere
 
 **When to Use**:
-- ✅ VAE (variance parameters)
-- ✅ Reinforcement learning (policy networks)
-- ✅ When positive outputs required
+-  VAE (variance parameters)
+-  Reinforcement learning (policy networks)
+-  When positive outputs required
 
 ---
 
@@ -660,9 +658,9 @@ Gaussian(x) = e^(-x²)
 ```
 
 **When to Use**:
-- ✅ Radial Basis Function (RBF) networks
-- ✅ Local sensitivity modeling
-- ❌ General deep learning (vanishing gradient)
+-  Radial Basis Function (RBF) networks
+-  Local sensitivity modeling
+-  General deep learning (vanishing gradient)
 
 ---
 
@@ -675,10 +673,10 @@ Cosine(x) = cos(x)
 ```
 
 **When to Use**:
-- ✅ Neural implicit representations (SIREN)
-- ✅ Periodic signal modeling
-- ✅ Fourier feature networks
-- ❌ Standard classification/regression
+-  Neural implicit representations (SIREN)
+-  Periodic signal modeling
+-  Fourier feature networks
+-  Standard classification/regression
 
 **Special Use Case**: SIREN (Sinusoidal Representation Networks) for representing images, audio, 3D shapes
 
@@ -690,35 +688,35 @@ Cosine(x) = cos(x)
 
 ```
 START
-│
-├─ Output Layer?
-│  ├─ Binary Classification → Sigmoid
-│  ├─ Multi-class Classification → Softmax
-│  ├─ Regression (unbounded) → Linear
-│  └─ Regression (bounded) → Tanh or Sigmoid
-│
-├─ Transformer/LLM?
-│  ├─ FFN Layer → SwiGLU (best) or GeGLU
-│  └─ Attention → Softmax
-│
-├─ Mobile/Edge Device?
-│  ├─ Yes → Hard Swish or ReLU6
-│  └─ No → Continue
-│
-├─ Maximum Performance?
-│  ├─ NLP/Transformer → GELU or SwiGLU
-│  ├─ Computer Vision → Swish or Mish
-│  └─ General → GELU or Swish
-│
-├─ Computational Efficiency Critical?
-│  ├─ Yes → ReLU or Leaky ReLU
-│  └─ No → Continue
-│
-├─ Dying ReLU Problem?
-│  ├─ Yes → Leaky ReLU or ELU
-│  └─ No → ReLU
-│
-└─ Default → ReLU (start here)
+
+ Output Layer?
+   Binary Classification → Sigmoid
+   Multi-class Classification → Softmax
+   Regression (unbounded) → Linear
+   Regression (bounded) → Tanh or Sigmoid
+
+ Transformer/LLM?
+   FFN Layer → SwiGLU (best) or GeGLU
+   Attention → Softmax
+
+ Mobile/Edge Device?
+   Yes → Hard Swish or ReLU6
+   No → Continue
+
+ Maximum Performance?
+   NLP/Transformer → GELU or SwiGLU
+   Computer Vision → Swish or Mish
+   General → GELU or Swish
+
+ Computational Efficiency Critical?
+   Yes → ReLU or Leaky ReLU
+   No → Continue
+
+ Dying ReLU Problem?
+   Yes → Leaky ReLU or ELU
+   No → ReLU
+
+ Default → ReLU (start here)
 ```
 
 ---
@@ -855,7 +853,7 @@ class HybridNetwork(nn.Module):
 
 ## Common Pitfalls
 
-### ❌ Don't Do This
+###  Don't Do This
 
 1. **Using Sigmoid/Tanh in deep hidden layers**
    - Causes severe vanishing gradient
@@ -912,7 +910,7 @@ class HybridNetwork(nn.Module):
 
 ---
 
-## 📖 References
+##  References
 
 ### Seminal Papers
 
@@ -938,7 +936,7 @@ class HybridNetwork(nn.Module):
 
 ---
 
-## 🎯 Key Takeaways
+##  Key Takeaways
 
 1. **Start with ReLU** - It's the default for good reason (simple, effective, fast)
 
@@ -975,7 +973,7 @@ class HybridNetwork(nn.Module):
 
 ---
 
-## ✅ Practice Exercises
+##  Practice Exercises
 
 ### Beginner
 
@@ -1002,29 +1000,3 @@ class HybridNetwork(nn.Module):
 *Last updated: 2025-11-29*
 *Related notebook: `ActivationFunctions.ipynb`*
 *Comparison table: See notebook for comprehensive 30+ function comparison*
-
-
-## ✅ 最佳实践
-
-### 使用建议
-1. **数据预处理**：
-   - ⚠️ 注意事项1
-   - ✅ 推荐做法1
-
-2. **参数选择**：
-   - ⚠️ 注意事项2
-   - ✅ 推荐做法2
-
-3. **性能优化**：
-   - ⚠️ 注意事项3
-   - ✅ 推荐做法3
-
-### 常见陷阱
-
-| 陷阱 | 原因 | 解决方案 |
-|------|------|----------|
-| 陷阱1 | 原因说明 | 解决方法 |
-| 陷阱2 | 原因说明 | 解决方法 |
-| 陷阱3 | 原因说明 | 解决方法 |
-
----
