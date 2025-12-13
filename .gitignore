@@ -71,7 +71,7 @@ venv.bak/
 *.swo
 *~
 
-# Claude Code
+# Local tools
 .claude/
 
 # macOS
