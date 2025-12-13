@@ -1,300 +1,264 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=200&section=header&text=AI-Practices&fontSize=72&fontColor=e94560&fontAlignY=35&desc=A%20Systematic%20Approach%20to%20Artificial%20Intelligence%20Research%20%26%20Engineering&descSize=18&descAlignY=55&descAlign=50&animation=fadeIn" width="100%"/>
+<!-- iOS风格动态标题 -->
+<a href="https://github.com/zimingttkx/AI-Practices">
+  <img src="https://readme-typing-svg.demolab.com?font=SF+Pro+Display&weight=700&size=42&duration=3000&pause=1000&color=007AFF&center=true&vCenter=true&multiline=true&repeat=false&width=500&height=70&lines=AI-Practices" alt="AI-Practices" />
+</a>
 
-<br/>
+<a href="https://github.com/zimingttkx/AI-Practices">
+  <img src="https://readme-typing-svg.demolab.com?font=SF+Pro+Text&weight=400&size=18&duration=4000&pause=1000&color=8E8E93&center=true&vCenter=true&repeat=false&width=600&height=30&lines=A+Systematic+Approach+to+AI+Research+%26+Engineering" alt="Subtitle" />
+</a>
 
-<!-- Technical Badges -->
-<p>
-<img src="https://img.shields.io/badge/Python-3.10+-blue?style=flat&logo=python&logoColor=white" alt="Python"/>
-<img src="https://img.shields.io/badge/TensorFlow-2.13+-orange?style=flat&logo=tensorflow&logoColor=white" alt="TensorFlow"/>
-<img src="https://img.shields.io/badge/PyTorch-2.0+-red?style=flat&logo=pytorch&logoColor=white" alt="PyTorch"/>
-<img src="https://img.shields.io/badge/License-MIT-green?style=flat" alt="License"/>
-<img src="https://img.shields.io/github/last-commit/zimingttkx/AI-Practices?style=flat&color=purple" alt="Last Commit"/>
-</p>
+<br/><br/>
 
-<p>
-<a href="https://zimingttkx.github.io/AI-Practices/"><img src="https://img.shields.io/badge/Documentation-Online-blue?style=for-the-badge" alt="Docs"/></a>
-<a href="./README_EN.md"><img src="https://img.shields.io/badge/English-README-gray?style=for-the-badge" alt="English"/></a>
-</p>
+<!-- iOS风格核心统计卡片 -->
+<a href="https://github.com/zimingttkx/AI-Practices/stargazers">
+  <img src="https://img.shields.io/github/stars/zimingttkx/AI-Practices?style=for-the-badge&logo=apple&logoColor=white&labelColor=000000&color=007AFF&label=Stars" alt="Stars">
+</a>
+&nbsp;
+<a href="https://github.com/zimingttkx/AI-Practices/network/members">
+  <img src="https://img.shields.io/github/forks/zimingttkx/AI-Practices?style=for-the-badge&logo=git&logoColor=white&labelColor=000000&color=34C759&label=Forks" alt="Forks">
+</a>
+&nbsp;
+<a href="https://github.com/zimingttkx/AI-Practices/issues">
+  <img src="https://img.shields.io/github/issues/zimingttkx/AI-Practices?style=for-the-badge&logo=github&logoColor=white&labelColor=000000&color=FF9500&label=Issues" alt="Issues">
+</a>
+&nbsp;
+<a href="./LICENSE">
+  <img src="https://img.shields.io/github/license/zimingttkx/AI-Practices?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=000000&color=5856D6&label=License" alt="License">
+</a>
+
+<br/><br/>
+
+<!-- 活跃度指标 -->
+<a href="https://github.com/zimingttkx/AI-Practices/commits/main">
+  <img src="https://img.shields.io/github/last-commit/zimingttkx/AI-Practices?style=flat-square&logo=github&logoColor=white&labelColor=1c1c1e&color=AF52DE&label=Last%20Commit" alt="Last Commit">
+</a>
+&nbsp;
+<a href="https://github.com/zimingttkx/AI-Practices/graphs/commit-activity">
+  <img src="https://img.shields.io/github/commit-activity/m/zimingttkx/AI-Practices?style=flat-square&logo=github&logoColor=white&labelColor=1c1c1e&color=FF2D55&label=Monthly%20Commits" alt="Commit Activity">
+</a>
+&nbsp;
+<a href="https://github.com/zimingttkx/AI-Practices">
+  <img src="https://img.shields.io/github/repo-size/zimingttkx/AI-Practices?style=flat-square&logo=github&logoColor=white&labelColor=1c1c1e&color=8E8E93&label=Size" alt="Repo Size">
+</a>
+&nbsp;
+<img src="https://komarev.com/ghpvc/?username=zimingttkx-AI-Practices&style=flat-square&color=007AFF&label=Views" alt="Profile Views">
+
+<br/><br/>
+
+<!-- 快捷导航 -->
+<a href="./README_EN.md">
+  <img src="https://img.shields.io/badge/English-README-007AFF?style=for-the-badge&labelColor=000000" alt="English">
+</a>
+&nbsp;
+<a href="https://zimingttkx.github.io/AI-Practices/">
+  <img src="https://img.shields.io/badge/Documentation-Online-34C759?style=for-the-badge&labelColor=000000" alt="Docs">
+</a>
 
 </div>
 
----
+<br/>
 
-## Abstract
+<!-- 动态分隔线 -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-**AI-Practices** 是一个系统化的人工智能学习与研究平台，采用 **渐进式学习框架 (Progressive Learning Framework, PLF)** 方法论，构建了从经典机器学习到前沿深度学习的完整知识体系。本项目涵盖 **113+ 可复现实验**、**9 个核心模块** 和 **19 个端到端项目**，包括多个 **Kaggle 竞赛金牌方案**。项目遵循软件工程最佳实践，代码总量超过 **149,000 行**，全部符合 PEP8 规范。
+<br/>
 
-**关键词**: 机器学习, 深度学习, 计算机视觉, 自然语言处理, 强化学习, 生成式模型
+## Overview
 
----
+**AI-Practices** 是一个系统化的人工智能学习与研究平台，采用**渐进式学习框架**构建从经典机器学习到前沿深度学习的完整知识体系。
 
-## Table of Contents
+<div align="center">
 
-- [1. Introduction](#1-introduction)
-- [2. Methodology](#2-methodology)
-- [3. System Architecture](#3-system-architecture)
-- [4. Modules Overview](#4-modules-overview)
-- [5. Experimental Setup](#5-experimental-setup)
-- [6. Results & Benchmarks](#6-results--benchmarks)
-- [7. Quick Start](#7-quick-start)
-- [8. Citation](#8-citation)
-- [9. License](#9-license)
+| Metric | Value | Description |
+|:------:|:-----:|:------------|
+| **Notebooks** | `113+` | 可复现实验，含详细注释 |
+| **Modules** | `9` | 核心学习模块 |
+| **Projects** | `19` | 端到端实战项目 |
+| **Code** | `149k+` | 行高质量代码 (PEP8) |
+| **Kaggle** | `Gold` | 竞赛金牌方案 |
 
----
+</div>
 
-## 1. Introduction
+<br/>
 
-### 1.1 Research Background
+## Tech Stack
 
-随着人工智能技术的快速发展，构建一个系统化、可复现的学习平台变得至关重要。现有学习资源往往存在以下问题：
+<div align="center">
 
-| 问题 | 描述 |
-|:-----|:-----|
-| **碎片化** | 知识点分散，缺乏系统性 |
-| **理论实践脱节** | 理论讲解与代码实现分离 |
-| **可复现性差** | 缺乏完整的实验环境配置 |
-| **工程化不足** | 忽视软件工程最佳实践 |
+<!-- 深度学习框架 -->
+<img src="https://img.shields.io/badge/TensorFlow-2.13+-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white&labelColor=000000" alt="TensorFlow"/>
+&nbsp;
+<img src="https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white&labelColor=000000" alt="PyTorch"/>
+&nbsp;
+<img src="https://img.shields.io/badge/Keras-3.0+-D00000?style=for-the-badge&logo=keras&logoColor=white&labelColor=000000" alt="Keras"/>
+&nbsp;
+<img src="https://img.shields.io/badge/Transformers-4.30+-FFCA28?style=for-the-badge&logo=huggingface&logoColor=white&labelColor=000000" alt="Transformers"/>
 
-### 1.2 Objectives
+<br/><br/>
 
-本项目旨在提供一个 **理论驱动、实践为本、工程导向** 的 AI 学习平台：
+<!-- 数据科学 -->
+<img src="https://img.shields.io/badge/Scikit--learn-1.3+-F7931E?style=flat-square&logo=scikitlearn&logoColor=white&labelColor=1c1c1e" alt="Sklearn"/>
+&nbsp;
+<img src="https://img.shields.io/badge/XGBoost-2.0+-189FDD?style=flat-square&logo=xgboost&logoColor=white&labelColor=1c1c1e" alt="XGBoost"/>
+&nbsp;
+<img src="https://img.shields.io/badge/NumPy-1.24+-013243?style=flat-square&logo=numpy&logoColor=white&labelColor=1c1c1e" alt="NumPy"/>
+&nbsp;
+<img src="https://img.shields.io/badge/Pandas-2.0+-150458?style=flat-square&logo=pandas&logoColor=white&labelColor=1c1c1e" alt="Pandas"/>
+&nbsp;
+<img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white&labelColor=1c1c1e" alt="Python"/>
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                         AI-Practices                             │
-├─────────────────────────────────────────────────────────────────┤
-│  ◆ 113+ Reproducible Experiments                                │
-│  ◆ 9 Core Learning Modules                                      │
-│  ◆ 19 End-to-End Projects                                       │
-│  ◆ 149,000+ Lines of Production-Quality Code                    │
-│  ◆ Multiple Kaggle Gold Medal Solutions                         │
-└─────────────────────────────────────────────────────────────────┘
-```
+</div>
 
-### 1.3 Contributions
+<br/>
 
-本项目的主要贡献包括：
+<!-- 动态分隔线 -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-1. **渐进式学习框架 (PLF)**: 提出四阶段学习方法论，实现从理论到实践的平滑过渡
-2. **模块化课程体系**: 设计 9 个相互关联的学习模块，覆盖 AI 核心技术栈
-3. **可复现实验集**: 提供 113+ 个完整的 Jupyter 实验，含详细注释
-4. **工程化项目模板**: 建立标准化的项目结构和代码规范
-5. **竞赛级解决方案**: 包含多个 Kaggle Top 1% 金牌方案
+<br/>
 
----
+## Curriculum
 
-## 2. Methodology
-
-### 2.1 Progressive Learning Framework (PLF)
-
-本项目采用四阶段渐进式学习框架：
-
-```
-                    ┌─────────────────────────────────────┐
-                    │     Progressive Learning Framework   │
-                    └─────────────────────────────────────┘
-                                      │
-        ┌─────────────┬───────────────┼───────────────┬─────────────┐
-        ▼             ▼               ▼               ▼             ▼
-   ┌─────────┐  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐
-   │ Theory  │  │  Impl   │    │Framework│    │Practice │    │  Eval   │
-   │  First  │─▶│  From   │───▶│ Master  │───▶│ Project │───▶│  Kaggle │
-   │         │  │ Scratch │    │         │    │         │    │         │
-   └─────────┘  └─────────┘    └─────────┘    └─────────┘    └─────────┘
-       │             │              │              │              │
-       ▼             ▼              ▼              ▼              ▼
-   数学原理      核心算法       TensorFlow      端到端项目      竞赛验证
-   算法理论      底层实现       PyTorch         真实场景        排名指标
-```
-
-### 2.2 Learning Principles
-
-| Phase | 原则 | 方法 | 产出 |
-|:-----:|:-----|:-----|:-----|
-| **Ⅰ** | Theory First | 数学推导 + 算法分析 | 理论笔记 |
-| **Ⅱ** | Implementation | NumPy 从零实现 | 核心代码 |
-| **Ⅲ** | Framework | TensorFlow/PyTorch | 工程代码 |
-| **Ⅳ** | Practice | 真实项目 + 竞赛 | 完整方案 |
-
----
-
-## 3. System Architecture
-
-### 3.1 Module Dependencies
+<div align="center">
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1a1a2e', 'primaryTextColor': '#eee', 'primaryBorderColor': '#e94560', 'lineColor': '#e94560', 'secondaryColor': '#16213e'}}}%%
-graph TB
-    subgraph Phase1["Phase 1: Foundation"]
-        A[01-Foundations<br/>机器学习理论基础]
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#007AFF', 'primaryTextColor': '#fff', 'primaryBorderColor': '#007AFF', 'lineColor': '#5856D6', 'secondaryColor': '#1c1c1e', 'tertiaryColor': '#2c2c2e'}}}%%
+flowchart TB
+    subgraph Foundation["Phase 1: Foundation"]
+        A[01 ML Basics]
     end
 
-    subgraph Phase2["Phase 2: Deep Learning Core"]
-        B[02-Neural Networks<br/>深度学习基石]
-        C[03-Computer Vision<br/>视觉感知]
-        D[04-Sequence Models<br/>序列建模]
+    subgraph Core["Phase 2: Deep Learning"]
+        B[02 Neural Networks]
+        C[03 Computer Vision]
+        D[04 Sequence Models]
     end
 
-    subgraph Phase3["Phase 3: Advanced"]
-        E[05-Advanced Topics<br/>工程优化]
-        F[06-Generative<br/>生成模型]
-        G[07-RL<br/>强化学习]
+    subgraph Advanced["Phase 3: Advanced"]
+        E[05 Advanced Topics]
+        F[06 Generative Models]
+        G[07 Reinforcement Learning]
     end
 
-    subgraph Phase4["Phase 4: Application"]
-        H[09-Projects<br/>实战项目]
+    subgraph Practice["Phase 4: Projects"]
+        H[08 Theory Notes]
+        I[09 Projects]
     end
 
     A --> B
     B --> C & D
     C & D --> E
     E --> F & G
-    F & G --> H
-    C & D --> H
+    F & G --> I
+    C & D --> I
+    H -.-> A & B & C & D
 ```
 
-### 3.2 Directory Structure
+</div>
+
+<br/>
+
+### Module Details
+
+| # | Module | Topics | Level |
+|:-:|:-------|:-------|:-----:|
+| **01** | **Foundations** | Linear Models, SVM, Trees, Ensemble, Clustering | Foundation |
+| **02** | **Neural Networks** | Keras, Training Techniques, Custom Models | Core |
+| **03** | **Computer Vision** | CNN Architectures, Transfer Learning, Interpretability | Core |
+| **04** | **Sequence Models** | RNN/LSTM/GRU, Attention, Transformers, BERT | Core |
+| **05** | **Advanced Topics** | Hyperparameter Tuning, Distributed Training, Deployment | Advanced |
+| **06** | **Generative Models** | VAE, GAN, Diffusion Models | Advanced |
+| **07** | **Reinforcement Learning** | DQN, Policy Gradient, PPO, SAC | Advanced |
+| **08** | **Theory Notes** | Mathematical Foundations, Optimization | Reference |
+| **09** | **Projects** | Kaggle Competitions, Industry Applications | Practice |
+
+<br/>
+
+<!-- 动态分隔线 -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
+<br/>
+
+## Architecture
 
 ```
 AI-Practices/
 │
-├── 01-foundations/                 # 机器学习基础理论
-│   ├── training-models/            #   优化方法: SGD, Adam, L-BFGS
-│   ├── classification/             #   分类算法: LR, SVM, Decision Tree
-│   ├── ensemble-learning/          #   集成方法: Bagging, Boosting, Stacking
-│   └── unsupervised-learning/      #   无监督: Clustering, Dimensionality Reduction
+├── 01-foundations/              # ML Basics: SGD, SVM, Trees, Ensemble
+├── 02-neural-networks/          # DL Core: Keras, BatchNorm, Dropout
+├── 03-computer-vision/          # CV: LeNet → ResNet → ViT
+├── 04-sequence-models/          # NLP: RNN → Transformer → BERT
+├── 05-advanced-topics/          # Engineering: Optuna, TensorRT
+├── 06-generative-models/        # Generative: VAE, GAN, Diffusion
+├── 07-reinforcement-learning/   # RL: DQN, PPO, SAC
+├── 08-theory-notes/             # Theory: Math, Optimization
+├── 09-practical-projects/       # Projects: Kaggle, Industry
 │
-├── 02-neural-networks/             # 神经网络与深度学习
-│   ├── keras-introduction/         #   框架入门: Sequential, Functional API
-│   ├── training-deep-networks/     #   训练技巧: BatchNorm, Dropout, Residual
-│   └── custom-models/              #   自定义: Layer, Loss, Training Loop
-│
-├── 03-computer-vision/             # 计算机视觉
-│   ├── cnn-architectures/          #   架构演进: LeNet → ResNet → EfficientNet
-│   ├── transfer-learning/          #   迁移学习: Feature Extraction, Fine-tuning
-│   └── model-interpretability/     #   可解释性: Grad-CAM, SHAP
-│
-├── 04-sequence-models/             # 序列模型与NLP
-│   ├── rnn-lstm-gru/               #   循环网络: Vanishing Gradient, Gating
-│   ├── attention-transformer/      #   注意力机制: Self-Attention, Multi-Head
-│   └── pretrained-models/          #   预训练: BERT, GPT, T5
-│
-├── 05-advanced-topics/             # 高级专题
-│   ├── hyperparameter-tuning/      #   超参优化: Optuna, Ray Tune
-│   ├── distributed-training/       #   分布式: Data Parallel, Model Parallel
-│   └── model-deployment/           #   部署: TensorRT, ONNX, TFLite
-│
-├── 06-generative-models/           # 生成式模型
-│   ├── variational-autoencoders/   #   VAE: Latent Space, Reparameterization
-│   ├── generative-adversarial/     #   GAN: DCGAN, WGAN, StyleGAN
-│   └── diffusion-models/           #   扩散: DDPM, Stable Diffusion
-│
-├── 07-reinforcement-learning/      # 强化学习
-│   ├── value-based/                #   值方法: Q-Learning, DQN, Double DQN
-│   ├── policy-based/               #   策略方法: REINFORCE, PPO, SAC
-│   └── model-based/                #   模型方法: World Models, MuZero
-│
-├── 08-theory-notes/                # 理论参考手册
-│   ├── mathematical-foundations/   #   数学基础: Linear Algebra, Probability
-│   ├── optimization-theory/        #   优化理论: Convex, Non-convex
-│   └── information-theory/         #   信息论: Entropy, KL-Divergence
-│
-├── 09-practical-projects/          # 实战项目
-│   ├── kaggle-competitions/        #   竞赛方案: Gold Medal Solutions
-│   └── industry-applications/      #   工业应用: End-to-End Pipelines
-│
-└── utils/                          # 工具库
-    ├── data/                       #   数据处理
-    ├── visualization/              #   可视化
-    └── metrics/                    #   评估指标
+└── utils/                       # Tools: Data, Visualization, Metrics
 ```
 
----
+<br/>
 
-## 4. Modules Overview
+<!-- 动态分隔线 -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-### 4.1 Foundation Module (01)
+<br/>
 
-> **目标**: 建立机器学习数学基础与经典算法理论
+## Results
 
-| Topic | Algorithm | Complexity | Key Concepts |
-|:------|:----------|:-----------|:-------------|
-| Linear Models | OLS, Ridge, Lasso | O(nd²) | Regularization, Bias-Variance |
-| Classification | Logistic, SVM | O(n²) ~ O(n³) | Maximum Margin, Kernel Trick |
-| Tree Methods | CART, RF, GBDT | O(n log n) | Information Gain, Ensemble |
-| Dimensionality | PCA, t-SNE, UMAP | O(n²) ~ O(n³) | Manifold Learning |
+### Kaggle Competitions
 
-### 4.2 Neural Networks Module (02)
+<div align="center">
 
-> **目标**: 掌握深度学习核心技术与训练方法
+| Competition | Rank | Medal | Year |
+|:------------|:----:|:-----:|:----:|
+| Feedback Prize - ELL | **Top 1%** | 🥇 | 2023 |
+| RSNA Abdominal Trauma | **Top 1%** | 🥇 | 2023 |
+| American Express Default | Top 5% | 🥈 | 2022 |
+| RSNA Lumbar Spine | Top 10% | 🥉 | 2024 |
 
-**核心内容**:
+</div>
 
-$$\text{Forward: } \mathbf{h}^{(l)} = \sigma(\mathbf{W}^{(l)}\mathbf{h}^{(l-1)} + \mathbf{b}^{(l)})$$
+### Model Benchmarks
 
-$$\text{Backward: } \frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}} = \frac{\partial \mathcal{L}}{\partial \mathbf{h}^{(l)}} \cdot \frac{\partial \mathbf{h}^{(l)}}{\partial \mathbf{W}^{(l)}}$$
+<div align="center">
 
-| Topic | Techniques |
-|:------|:-----------|
-| Initialization | Xavier, He, Orthogonal |
-| Normalization | BatchNorm, LayerNorm, GroupNorm |
-| Regularization | Dropout, DropConnect, Stochastic Depth |
-| Optimization | SGD+Momentum, Adam, AdamW, LAMB |
+| Model | Dataset | Accuracy | Params |
+|:------|:--------|:--------:|:------:|
+| ResNet-50 | ImageNet | 76.1% | 25.6M |
+| EfficientNet-B0 | ImageNet | 77.1% | 5.3M |
+| ViT-B/16 | ImageNet | 77.9% | 86M |
+| BERT-base | SST-2 | 93.2% | 110M |
 
-### 4.3 Computer Vision Module (03)
+</div>
 
-> **目标**: 系统学习 CNN 架构演进与视觉任务
+<br/>
 
-**架构演进**:
+<!-- 动态分隔线 -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-```
-LeNet (1998) → AlexNet (2012) → VGG (2014) → GoogLeNet (2014)
-                                    ↓
-ResNet (2015) → DenseNet (2016) → EfficientNet (2019) → ViT (2020)
-```
+<br/>
 
-### 4.4 Sequence Models Module (04)
-
-> **目标**: 掌握序列建模从 RNN 到 Transformer
-
-**Attention Mechanism**:
-
-$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
-
-### 4.5 Advanced Topics Module (05-07)
-
-| Module | Focus | Key Methods |
-|:-------|:------|:------------|
-| **05-Advanced** | 工程优化 | Mixed Precision, Gradient Checkpointing |
-| **06-Generative** | 生成模型 | VAE, GAN, Diffusion |
-| **07-RL** | 强化学习 | DQN, PPO, SAC |
-
----
-
-## 5. Experimental Setup
-
-### 5.1 Environment Configuration
+## Quick Start
 
 ```bash
-# Clone repository
+# Clone
 git clone https://github.com/zimingttkx/AI-Practices.git
 cd AI-Practices
 
-# Create environment
+# Environment
 conda create -n ai-practices python=3.10 -y
 conda activate ai-practices
 
-# Install dependencies
+# Install
 pip install -r requirements.txt
 
-# Verify installation
-python -c "import tensorflow as tf; print(f'TF: {tf.__version__}')"
-python -c "import torch; print(f'PyTorch: {torch.__version__}')"
+# Launch
+jupyter lab
 ```
 
-### 5.2 Hardware Requirements
+### Requirements
 
 | Component | Minimum | Recommended |
 |:----------|:--------|:------------|
@@ -303,128 +267,46 @@ python -c "import torch; print(f'PyTorch: {torch.__version__}')"
 | GPU | GTX 1060 | RTX 3080+ |
 | Storage | 50 GB | 200 GB SSD |
 
-### 5.3 Software Stack
+<br/>
 
-<table>
-<tr>
-<th>Category</th>
-<th>Package</th>
-<th>Version</th>
-</tr>
-<tr>
-<td rowspan="4"><b>Deep Learning</b></td>
-<td>TensorFlow</td><td>≥2.13.0</td>
-</tr>
-<tr><td>PyTorch</td><td>≥2.0.0</td></tr>
-<tr><td>Keras</td><td>≥3.0.0</td></tr>
-<tr><td>Transformers</td><td>≥4.30.0</td></tr>
-<tr>
-<td rowspan="3"><b>Machine Learning</b></td>
-<td>Scikit-learn</td><td>≥1.3.0</td>
-</tr>
-<tr><td>XGBoost</td><td>≥2.0.0</td></tr>
-<tr><td>LightGBM</td><td>≥4.0.0</td></tr>
-<tr>
-<td rowspan="3"><b>Data Processing</b></td>
-<td>NumPy</td><td>≥1.24.0</td>
-</tr>
-<tr><td>Pandas</td><td>≥2.0.0</td></tr>
-<tr><td>OpenCV</td><td>≥4.8.0</td></tr>
-</table>
+<!-- 动态分隔线 -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
----
+<br/>
 
-## 6. Results & Benchmarks
-
-### 6.1 Kaggle Competition Results
-
-| Competition | Rank | Medal | Year |
-|:------------|:----:|:-----:|:----:|
-| Feedback Prize - ELL | **Top 1%** | 🥇 Gold | 2023 |
-| RSNA Abdominal Trauma | **Top 1%** | 🥇 Gold | 2023 |
-| American Express Default | Top 5% | 🥈 Silver | 2022 |
-| RSNA Lumbar Spine | Top 10% | 🥉 Bronze | 2024 |
-
-### 6.2 Model Benchmarks
-
-#### Computer Vision
-
-| Model | Dataset | Top-1 Acc | Params | FLOPs |
-|:------|:--------|:---------:|:------:|:-----:|
-| ResNet-50 | ImageNet | 76.1% | 25.6M | 4.1G |
-| EfficientNet-B0 | ImageNet | 77.1% | 5.3M | 0.4G |
-| ViT-B/16 | ImageNet | 77.9% | 86M | 17.6G |
-
-#### Natural Language Processing
-
-| Model | Task | Metric | Score |
-|:------|:-----|:------:|:-----:|
-| BERT-base | SST-2 | Accuracy | 93.2% |
-| RoBERTa | MNLI | Accuracy | 87.6% |
-| T5-base | SQuAD | F1 | 88.9 |
-
----
-
-## 7. Quick Start
-
-### 7.1 Run Your First Experiment
-
-```bash
-# Navigate to project
-cd 09-practical-projects/02-computer-vision/01-mnist-cnn
-
-# Train model
-python src/train.py --epochs 20 --batch_size 64
-
-# Evaluate
-python src/evaluate.py --checkpoint best_model.pt
-```
-
-**Expected Output**:
-```
-Epoch 20/20 - loss: 0.0234 - accuracy: 99.21%
-Test Accuracy: 99.12% | F1-Score: 0.991
-```
-
-### 7.2 Launch Jupyter Lab
-
-```bash
-jupyter lab --port=8888
-# Open browser: http://localhost:8888
-```
-
----
-
-## 8. Citation
-
-If this project contributes to your research, please cite:
+## Citation
 
 ```bibtex
 @misc{ai-practices2024,
   author       = {zimingttkx},
-  title        = {{AI-Practices}: A Systematic Approach to Artificial Intelligence Research and Engineering},
+  title        = {AI-Practices: A Systematic Approach to AI Research and Engineering},
   year         = {2024},
   publisher    = {GitHub},
-  howpublished = {\url{https://github.com/zimingttkx/AI-Practices}},
-  note         = {Accessed: 2024}
+  howpublished = {\url{https://github.com/zimingttkx/AI-Practices}}
 }
 ```
 
----
+<br/>
 
-## 9. License
+## License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see [LICENSE](LICENSE) for details.
 
----
+<br/>
+
+<!-- 动态分隔线 -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
+<br/>
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=100&section=footer" width="100%"/>
+<a href="https://github.com/zimingttkx/AI-Practices">
+  <img src="https://readme-typing-svg.demolab.com?font=SF+Pro+Text&weight=300&size=14&duration=4000&pause=2000&color=8E8E93&center=true&vCenter=true&repeat=true&width=400&height=20&lines=Made+with+%E2%9D%A4%EF%B8%8F+for+the+AI+Community" alt="Footer" />
+</a>
 
-<sub>
-<b>AI-Practices</b> — A Systematic Approach to AI Research & Engineering<br/>
-Copyright © 2024 | <a href="https://github.com/zimingttkx/AI-Practices">GitHub Repository</a>
-</sub>
+<br/><br/>
+
+**[⬆ Back to Top](#overview)**
 
 </div>
