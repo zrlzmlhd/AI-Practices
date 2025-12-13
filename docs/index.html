@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-Practices - 全栈 AI 学习实验室">
+    <meta name="theme-color" content="#6366f1">
+    <title>AI-Practices - 全栈 AI 学习实验室</title>
+    <link rel="icon" type="image/svg+xml" href="public/logo.svg">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="public/logo.svg" alt="Logo" class="logo-img">
+                <span>AI-Practices</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">首页</a></li>
+                <li><a href="guide/getting-started.html" class="nav-link">快速开始</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">课程模块 <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="modules/01-foundations.html">01 - 机器学习基础</a></li>
+                        <li><a href="modules/02-neural-networks.html">02 - 神经网络</a></li>
+                        <li><a href="modules/03-computer-vision.html">03 - 计算机视觉</a></li>
+                        <li><a href="modules/04-sequence-models.html">04 - 序列模型</a></li>
+                        <li><a href="modules/05-advanced-topics.html">05 - 高级专题</a></li>
+                        <li><a href="modules/06-generative-models.html">06 - 生成式模型</a></li>
+                        <li><a href="modules/07-reinforcement-learning.html">07 - 强化学习</a></li>
+                        <li><a href="modules/08-theory-notes.html">08 - 理论笔记</a></li>
+                        <li><a href="modules/09-practical-projects.html">09 - 实战项目</a></li>
+                    </ul>
+                </li>
+                <li><a href="roadmap.html" class="nav-link">学习路径</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">更多 <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="contributing.html">贡献指南</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="license.html">许可证</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="https://github.com/zimingttkx/AI-Practices" class="nav-github" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="gradient-text">AI-Practices</span>
+            </h1>
+            <p class="hero-subtitle">全栈 AI 学习实验室</p>
+            <p class="hero-description">
+                从零到一的 AI 全栈实战之旅<br>
+                Machine Learning • Deep Learning • Computer Vision • NLP • Generative AI
+            </p>
+            <div class="hero-buttons">
+                <a href="guide/getting-started.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> 快速开始
+                </a>
+                <a href="https://github.com/zimingttkx/AI-Practices" class="btn btn-secondary" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 统计数据 -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-book"></i></div>
+                    <div class="stat-number">113+</div>
+                    <div class="stat-label">Jupyter Notebooks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-brain"></i></div>
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">核心模块</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
+                    <div class="stat-number">19</div>
+                    <div class="stat-label">实战项目</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="stat-number">Gold</div>
+                    <div class="stat-label">Kaggle 金牌方案</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 设计目标 -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">设计理念</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon theory">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>理论先行</h3>
+                    <p>每个模块均以数学原理和算法理论为基础，建立扎实的理论功底</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon implement">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>代码实现</h3>
+                    <p>从零实现核心算法，深入理解底层机制，不做 API 调用工程师</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon framework">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <h3>框架应用</h3>
+                    <p>掌握 TensorFlow/PyTorch 等主流框架的工程实践与最佳实践</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon practice">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>项目实战</h3>
+                    <p>通过真实项目和 Kaggle 竞赛检验学习成果，积累实战经验</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程模块 -->
+    <section class="modules">
+        <div class="container">
+            <h2 class="section-title">课程体系</h2>
+            <div class="modules-grid">
+                <a href="modules/01-foundations.html" class="module-card phase-1">
+                    <div class="module-number">01</div>
+                    <h3>机器学习基础</h3>
+                    <p>训练模型、分类、SVM、决策树、集成学习、降维、无监督学习</p>
+                    <span class="module-tag">Foundation</span>
+                </a>
+                <a href="modules/02-neural-networks.html" class="module-card phase-2">
+                    <div class="module-number">02</div>
+                    <h3>神经网络</h3>
+                    <p>Keras 入门、深度网络训练、自定义模型、数据管道</p>
+                    <span class="module-tag">Core</span>
+                </a>
+                <a href="modules/03-computer-vision.html" class="module-card phase-2">
+                    <div class="module-number">03</div>
+                    <h3>计算机视觉</h3>
+                    <p>CNN 基础、经典架构、迁移学习、模型可视化</p>
+                    <span class="module-tag">Core</span>
+                </a>
+                <a href="modules/04-sequence-models.html" class="module-card phase-2">
+                    <div class="module-number">04</div>
+                    <h3>序列模型</h3>
+                    <p>RNN 基础、LSTM/GRU、文本处理、序列 CNN</p>
+                    <span class="module-tag">Core</span>
+                </a>
+                <a href="modules/05-advanced-topics.html" class="module-card phase-3">
+                    <div class="module-number">05</div>
+                    <h3>高级专题</h3>
+                    <p>Functional API、回调与监控、模型优化</p>
+                    <span class="module-tag">Advanced</span>
+                </a>
+                <a href="modules/06-generative-models.html" class="module-card phase-3">
+                    <div class="module-number">06</div>
+                    <h3>生成式模型</h3>
+                    <p>GAN、文本生成、DeepDream、风格迁移</p>
+                    <span class="module-tag">Advanced</span>
+                </a>
+                <a href="modules/07-reinforcement-learning.html" class="module-card phase-3">
+                    <div class="module-number">07</div>
+                    <h3>强化学习</h3>
+                    <p>MDP 基础、Q-Learning、深度 RL、策略梯度</p>
+                    <span class="module-tag">Advanced</span>
+                </a>
+                <a href="modules/08-theory-notes.html" class="module-card phase-ref">
+                    <div class="module-number">08</div>
+                    <h3>理论笔记</h3>
+                    <p>激活函数、损失函数、架构设计速查手册</p>
+                    <span class="module-tag">Reference</span>
+                </a>
+                <a href="modules/09-practical-projects.html" class="module-card phase-4">
+                    <div class="module-number">09</div>
+                    <h3>实战项目</h3>
+                    <p>ML 基础项目、CV 项目、NLP 项目、时序项目、Kaggle 竞赛</p>
+                    <span class="module-tag">Practice</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术栈 -->
+    <section class="tech-stack">
+        <div class="container">
+            <h2 class="section-title">技术栈</h2>
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <h3><i class="fas fa-robot"></i> 深度学习</h3>
+                    <div class="tech-items">
+                        <span class="tech-badge tensorflow">TensorFlow</span>
+                        <span class="tech-badge keras">Keras</span>
+                        <span class="tech-badge pytorch">PyTorch</span>
+                        <span class="tech-badge huggingface">Transformers</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3><i class="fas fa-chart-bar"></i> 数据科学</h3>
+                    <div class="tech-items">
+                        <span class="tech-badge sklearn">Scikit-learn</span>
+                        <span class="tech-badge xgboost">XGBoost</span>
+                        <span class="tech-badge pandas">Pandas</span>
+                        <span class="tech-badge numpy">NumPy</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3><i class="fas fa-tools"></i> 开发工具</h3>
+                    <div class="tech-items">
+                        <span class="tech-badge python">Python</span>
+                        <span class="tech-badge jupyter">Jupyter</span>
+                        <span class="tech-badge git">Git</span>
+                        <span class="tech-badge docker">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 快速开始 -->
+    <section class="quickstart">
+        <div class="container">
+            <h2 class="section-title">快速开始</h2>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Terminal</span>
+                    <button class="copy-btn" onclick="copyCode()"><i class="fas fa-copy"></i></button>
+                </div>
+                <pre><code><span class="comment"># 克隆仓库</span>
+git clone https://github.com/zimingttkx/AI-Practices.git
+cd AI-Practices
+
+<span class="comment"># 创建 Conda 环境</span>
+conda create -n ai-practices python=3.10 -y
+conda activate ai-practices
+
+<span class="comment"># 安装依赖</span>
+pip install -r requirements.txt
+
+<span class="comment"># 启动 Jupyter</span>
+jupyter lab</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="public/logo.svg" alt="Logo">
+                    <span>AI-Practices</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/zimingttkx/AI-Practices" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="contributing.html">贡献指南</a>
+                    <a href="license.html">MIT License</a>
+                </div>
+                <p class="footer-copyright">
+                    © 2024 AI-Practices. Released under the MIT License.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
