@@ -1,0 +1,65 @@
+{
+  "timestamp": "2025-12-21T03:40:47.303087",
+  "modules": {
+    "01-foundations": {
+      "notebooks": 42,
+      "python_files": 0,
+      "markdown_files": 8,
+      "lines_of_code": 0
+    },
+    "02-neural-networks": {
+      "notebooks": 26,
+      "python_files": 0,
+      "markdown_files": 6,
+      "lines_of_code": 0
+    },
+    "03-computer-vision": {
+      "notebooks": 11,
+      "python_files": 0,
+      "markdown_files": 3,
+      "lines_of_code": 0
+    },
+    "04-sequence-models": {
+      "notebooks": 13,
+      "python_files": 0,
+      "markdown_files": 1,
+      "lines_of_code": 0
+    },
+    "05-advanced-topics": {
+      "notebooks": 13,
+      "python_files": 0,
+      "markdown_files": 3,
+      "lines_of_code": 0
+    },
+    "06-generative-models": {
+      "notebooks": 4,
+      "python_files": 0,
+      "markdown_files": 5,
+      "lines_of_code": 0
+    },
+    "07-reinforcement-learning": {
+      "notebooks": 24,
+      "python_files": 173,
+      "markdown_files": 19,
+      "lines_of_code": 79627
+    },
+    "08-theory-notes": {
+      "notebooks": 4,
+      "python_files": 0,
+      "markdown_files": 8,
+      "lines_of_code": 0
+    },
+    "09-practical-projects": {
+      "notebooks": 66,
+      "python_files": 223,
+      "markdown_files": 45,
+      "lines_of_code": 69412
+    }
+  },
+  "totals": {
+    "notebooks": 203,
+    "python_files": 396,
+    "markdown_files": 98,
+    "lines_of_code": 149039
+  }
+}
